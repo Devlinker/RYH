@@ -1,6 +1,22 @@
 // public/js/address-manager.js
 
-const AddressManager = (function () {
+
+    document.addEventListener('DOMContentLoaded', () => {
+    window.AddressManager.init({
+        onChange() {
+            if (typeof window.onAddressListChanged === 'function') {
+                window.onAddressListChanged(
+                    window.AddressManager.getAddresses(),
+                    window.AddressManager.getSelectedId()
+                );
+            }
+        },
+        selectable: window.ADDRESS_CONFIG?.selectable ?? false
+    });
+});
+
+
+window.AddressManager = (function () {
     let addresses = [];
     let selectedAddressId = null;
     let pendingDeleteId = null;

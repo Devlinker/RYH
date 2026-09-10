@@ -102,6 +102,7 @@ trait FormatsProducts
             'image'       => $product->main_image,
             'colors'      => $colors->unique()->values()->take(3),
             'wishlisted'  => in_array($product->id, $wishlistIds),
+            'description' => $product->description ?? '',
         ];
     }
 }

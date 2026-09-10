@@ -16,10 +16,10 @@
                 </div>
                 <!-- Desktop Menu /contact-us -->
                 <div class="hidden lg:flex space-x-6 xl:space-x-8 text-sm lg:text-base font-medium">
-                    <a href="{{ route('home') }}" class="hover:text-pink-500 transition">Home</a>
-                    <a href="/shop" class="hover:text-pink-500 transition">Shop</a>
-                    <a href="/about-us" class="hover:text-pink-500 transition">About us</a>
-                    <a href="/contact-us" class="hover:text-pink-500 transition">Contact Us</a>
+                    <a href="{{ route('home') }}" class="hover:text-amber-500 transition">Home</a>
+                    <a href="/shop" class="hover:text-amber-500 transition">Shop</a>
+                    <a href="/about-us" class="hover:text-amber-500 transition">About us</a>
+                    <a href="/contact-us" class="hover:text-amber-500 transition">Contact Us</a>
                 </div>
                 <!-- Right Section -->
                 <div class="flex items-center gap-[12px] sm:gap-3">
@@ -28,7 +28,7 @@
                         id="navSearchForm">
                         <input type="text" name="search" value="{{ request('search') }}" placeholder="Search"
                             autocomplete="off" id="navSearchInput"
-                            class="bg-gray-800 text-xs sm:text-sm w-28 sm:w-40 md:w-52 lg:w-64 rounded-full pl-8 pr-4 py-1.5 focus:outline-none focus:ring-2 focus:ring-pink-500">
+                            class="bg-gray-800 text-xs sm:text-sm w-28 sm:w-40 md:w-52 lg:w-64 rounded-full pl-8 pr-4 py-1.5 focus:outline-none focus:ring-2 focus:ring-amber-500">
                         <button type="submit"
                             class="absolute left-3 top-2 text-gray-400 text-xs sm:text-sm bg-transparent border-0 p-0 cursor-pointer">
                             <i class="fa-solid fa-magnifying-glass"></i>
@@ -36,23 +36,23 @@
                     </form>
                     <!-- Profile -->
                     <a href="{{ url('/profile') }}"
-                        class="w-8 h-8 flex items-center justify-center bg-gray-800 rounded-full hover:bg-pink-600 transition">
+                        class="w-8 h-8 flex items-center justify-center bg-gray-800 rounded-full hover:bg-amber-500 hover:text-black transition">
                         <i class="fa-regular fa-user text-xs"></i>
                     </a>
                     <!-- Wishlist -->
                     <a href="{{ route('whishlist') }}"
-                        class="w-8 h-8 flex items-center justify-center bg-gray-800 rounded-full hover:bg-pink-600 transition">
+                        class="w-8 h-8 flex items-center justify-center bg-gray-800 rounded-full hover:bg-amber-500 hover:text-black transition">
                         <i class="fa-regular fa-heart text-xs"></i>
                     </a>
                     <!-- Cart -->
                     <div class="relative">
                         <a href="{{ url('/shop/cart') }}"
-                            class="w-8 h-8 flex items-center justify-center bg-gray-800 rounded-full hover:bg-pink-600 transition">
+                            class="w-8 h-8 flex items-center justify-center bg-gray-800 rounded-full hover:bg-amber-500 hover:text-black transition">
                             <i class="fa-solid fa-cart-shopping text-xs"></i>
                         </a>
                         @if ($cartCount > 0)
                             <span
-                                class="absolute -top-1.5 -right-1.5 bg-pink-600 text-[10px] px-1.5 rounded-full leading-none">
+                                class="absolute -top-1.5 -right-1.5 bg-amber-500 text-black font-extrabold text-[10px] px-1.5 rounded-full leading-none shadow-sm">
                                 {{ $cartCount > 99 ? '99+' : $cartCount }}
                             </span>
                         @endif
@@ -66,10 +66,10 @@
         <!-- Mobile Menu /contact-us -->
         <div id="mobile-menu"
             class="hidden lg:hidden bg-black px-4 sm:px-6 pb-4 space-y-3 text-sm sm:text-base font-medium">
-            <a href="{{ route('home') }}" class="block hover:text-pink-500">Home</a>
-            <a href="/shop" class="block hover:text-pink-500">Shop</a>
-            <a href="/about-us" class="block hover:text-pink-500">About us</a>
-            <a href="/contact-us" class="block hover:text-pink-500">Contact Us</a>
+            <a href="{{ route('home') }}" class="block hover:text-amber-500">Home</a>
+            <a href="/shop" class="block hover:text-amber-500">Shop</a>
+            <a href="/about-us" class="block hover:text-amber-500">About us</a>
+            <a href="/contact-us" class="block hover:text-amber-500">Contact Us</a>
         </div>
     </nav>
 @else
@@ -86,10 +86,10 @@
 
                 <!-- Desktop Menu /contact-us -->
                 <div class="hidden lg:flex space-x-6 xl:space-x-8 text-sm lg:text-base font-medium">
-                    <a href="{{ route('home') }}" class="hover:text-pink-500 transition">Home</a>
-                    <a href="/shop" class="hover:text-pink-500 transition">Shop</a>
-                    <a href="/about-us" class="hover:text-pink-500 transition">About us</a>
-                    <a href="/contact-us" class="hover:text-pink-500 transition">Contact Us</a>
+                    <a href="{{ route('home') }}" class="hover:text-amber-500 transition">Home</a>
+                    <a href="/shop" class="hover:text-amber-500 transition">Shop</a>
+                    <a href="/about-us" class="hover:text-amber-500 transition">About us</a>
+                    <a href="/contact-us" class="hover:text-amber-500 transition">Contact Us</a>
                 </div>
 
                 <!-- Right Section -->
@@ -100,7 +100,7 @@
                         id="navSearchForm">
                         <input type="text" name="search" value="{{ request('search') }}" placeholder="Search"
                             autocomplete="off" id="navSearchInput"
-                            class="bg-gray-800 text-xs sm:text-sm w-28 sm:w-40 md:w-52 lg:w-64 rounded-full pl-8 pr-4 py-1.5 focus:outline-none focus:ring-2 focus:ring-pink-500">
+                            class="bg-gray-800 text-xs sm:text-sm w-28 sm:w-40 md:w-52 lg:w-64 rounded-full pl-8 pr-4 py-1.5 focus:outline-none focus:ring-2 focus:ring-amber-500">
                         <button type="submit"
                             class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs sm:text-sm bg-transparent border-0 p-0 cursor-pointer">
                             <i class="fa-solid fa-magnifying-glass"></i>
@@ -109,7 +109,7 @@
 
                     <!-- Login Button -->
                     <a href="javascript:void(0)" id="LoginBtn"
-                        class="bg-white text-black  text-[10px] sm:text-xs md:text-sm font-semibold px-3 sm:px-6 md:px-8 py-1 sm:py-1.5 md:py-2 rounded-full hover:bg-gray-200 transition">Login</a>
+                        class="bg-white text-black  text-[10px] sm:text-xs md:text-sm font-semibold px-3 sm:px-6 md:px-8 py-1 sm:py-1.5 md:py-2 rounded-full hover:bg-amber-500 transition">Login</a>
 
                     <!-- Mobile Menu Button -->
                     <div class="lg:hidden">
@@ -125,10 +125,10 @@
         <!-- Mobile Menu /contact-us -->
         <div id="mobile-menu"
             class="hidden lg:hidden bg-black px-4 sm:px-6 pb-4 space-y-3 text-sm sm:text-base font-medium">
-            <a href="{{ route('home') }}" class="block hover:text-pink-500">Home</a>
-            <a href="/shop" class="block hover:text-pink-500">Shop</a>
-            <a href="/about-us" class="block hover:text-pink-500">About us</a>
-            <a href="/contact-us" class="block hover:text-pink-500">Contact Us</a>
+            <a href="{{ route('home') }}" class="block hover:text-amber-500">Home</a>
+            <a href="/shop" class="block hover:text-amber-500">Shop</a>
+            <a href="/about-us" class="block hover:text-amber-500">About us</a>
+            <a href="/contact-us" class="block hover:text-amber-500">Contact Us</a>
         </div>
 
     </nav>

@@ -1,133 +1,217 @@
-<div class="text-[18px] pb-[25px] mb-[10px] font-semibold border-b border-[#ccc]">
-    <h2>Filters Options</h2>
+{{-- Filters Sidebar Component --}}
+<div class="pb-4 mb-4 border-b border-slate-200 hidden md:flex items-center justify-between">
+    <h2 class="text-sm font-extrabold uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
+        <span class="text-amber-500 font-extrabold">//</span> Filters
+    </h2>
+    <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Refine</span>
 </div>
-<!-- MOBILE FILTER HEADER -->
-<div class="md:hidden flex justify-between items-center mb-4 p-4 border-b">
-    <h2 class="text-lg font-bold">Filters</h2>
-    <button id="closeFilter" class="text-2xl">✕</button>
-</div>
-<div class="space-y-6 h-[75vh] ml-[40px] md:ml-0 overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
 
-    <div>
-        <h3 class="font-semibold mb-3">Categories</h3>
-        @forelse($categories as $category)
-            <label class="block">
-                <input type="checkbox" class="filter-category" value="{{ $category->get_category->id }}">
-                {{ $category->get_category->name }}
+<!-- MOBILE FILTER HEADER -->
+<div class="md:hidden flex justify-between items-center mb-4 p-3 border-b border-slate-200 bg-slate-50 rounded-xl">
+    <h2 class="text-sm font-extrabold uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
+        <span class="text-amber-500 font-extrabold">//</span> Filters
+    </h2>
+    <button id="closeFilter" class="w-7 h-7 flex items-center justify-center rounded-full bg-slate-200 text-slate-700 hover:bg-slate-900 hover:text-white transition-all text-xs font-bold">
+        ✕
+    </button>
+</div>
+
+<div class="space-y-6">
+
+    <!-- CATEGORIES -->
+    <div class="pb-5 border-b border-slate-100">
+        <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-3 flex items-center justify-between">
+            <span>Categories</span>
+            @if(isset($categories))
+            <span class="text-[10px] text-slate-400 font-normal">({{ $categories->count() }})</span>
+            @endif
+        </h3>
+        <div class="space-y-2 max-h-52 overflow-y-auto pr-1 [scrollbar-width:thin]">
+            @forelse($categories as $category)
+            <label class="group flex items-center gap-2.5 text-sm text-slate-600 hover:text-slate-900 cursor-pointer select-none py-0.5 transition-colors">
+                <input type="checkbox" class="filter-category w-4 h-4 rounded border-slate-300 accent-amber-500 focus:ring-0 cursor-pointer"
+                    value="{{ $category->get_category->id }}">
+                <span class="group-hover:translate-x-0.5 transition-transform">{{ $category->get_category->name }}</span>
             </label>
-        @empty
-            <p class="text-sm text-gray-400">No categories</p>
-        @endforelse
+            @empty
+            <p class="text-xs text-slate-400">No categories</p>
+            @endforelse
+        </div>
     </div>
 
     <!-- FABRIC (dynamic) -->
     @if (isset($fabrics) && $fabrics->count())
-        <div>
-            <h3 class="font-semibold mb-3">Fabric</h3>
+    <div class="pb-5 border-b border-slate-100">
+        <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-3">Fabric</h3>
+        <div class="space-y-2 max-h-44 overflow-y-auto pr-1 [scrollbar-width:thin]">
             @foreach ($fabrics as $fabric)
-                <label class="block">
-                    <input type="checkbox" class="filter-fabric" value="{{ strtolower($fabric) }}">
-                    {{ $fabric }}
-                </label>
+            <label class="group flex items-center gap-2.5 text-sm text-slate-600 hover:text-slate-900 cursor-pointer select-none py-0.5 transition-colors">
+                <input type="checkbox" class="filter-fabric w-4 h-4 rounded border-slate-300 accent-amber-500 focus:ring-0 cursor-pointer"
+                    value="{{ strtolower($fabric) }}">
+                <span class="capitalize group-hover:translate-x-0.5 transition-transform">{{ $fabric }}</span>
+            </label>
             @endforeach
         </div>
+    </div>
     @endif
 
-    <!-- PRICE -->
-    <div class="w-[120px]">
-        <h3 class="font-semibold mb-8">Price</h3>
-
-        <div class="relative h-10">
-            <div class="absolute top-1/2 -translate-y-1/2 w-full h-1 bg-gray-300 rounded"></div>
-            <div id="rangeTrack" class="absolute top-1/2 -translate-y-1/2 h-1 bg-black rounded"></div>
-
-            <input type="range" id="minRange" min="{{ $priceMin ?? 100 }}" max="{{ $priceMax ?? 5000 }}"
-                value="{{ $priceMin ?? 100 }}"
-                class="absolute w-full appearance-none bg-transparent pointer-events-none">
-
-            <input type="range" id="maxRange" min="{{ $priceMin ?? 100 }}" max="{{ $priceMax ?? 5000 }}"
-                value="{{ $priceMax ?? 5000 }}"
-                class="absolute w-full appearance-none bg-transparent pointer-events-none">
-
-            <div id="minTooltip" class="absolute -top-8 text-xs bg-black text-white px-2 py-1 rounded">
-                ₹{{ $priceMin ?? 100 }}
-            </div>
-            <div id="maxTooltip" class="absolute -top-8 text-xs bg-black text-white px-2 py-1 rounded">
-                ₹{{ $priceMax ?? 5000 }}
-            </div>
+    <!-- PRICE RANGE -->
+    <div class="pb-5 border-b border-slate-100 w-[85%]">
+        <div class="flex items-center justify-between mb-2">
+            <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-700">Price</h3>
+            <button type="button" id="resetPriceBtn" class="text-[10px] font-bold text-amber-600 hover:text-amber-700 hover:underline">
+                Reset
+            </button>
         </div>
 
-        <div class="flex justify-between text-sm mt-4">
-            <span id="minPrice">₹{{ $priceMin ?? 100 }}</span>
-            <span id="maxPrice">₹{{ $priceMax ?? 5000 }}</span>
+        <!-- Perfectly Centered Slider Bar -->
+        <div class="relative h-6 flex items-center my-3 select-none">
+            <!-- Background base track -->
+            <div class="absolute inset-x-0 h-1.5 bg-slate-200 rounded-full"></div>
+
+            <!-- Active glowing amber track -->
+            <div id="rangeTrack" class="absolute h-1.5 bg-gradient-to-r from-amber-500 to-amber-600 rounded-full shadow-[0_1px_6px_rgba(245,158,11,0.45)] pointer-events-none"></div>
+
+            <!-- Min Input -->
+            <input type="range" id="minRange" min="{{ $priceMin ?? 100 }}" max="{{ $priceMax ?? 5000 }}"
+                value="{{ $priceMin ?? 100 }}" step="25"
+                class="range-slider">
+
+            <!-- Max Input -->
+            <input type="range" id="maxRange" min="{{ $priceMin ?? 100 }}" max="{{ $priceMax ?? 5000 }}"
+                value="{{ $priceMax ?? 5000 }}" step="25"
+                class="range-slider">
+        </div>
+
+        <!-- Default Price Badge Box -->
+        <div class="flex items-center justify-between text-xs font-bold text-slate-800 bg-slate-50 px-3 py-2 rounded-xl border border-slate-100">
+            <div class="flex flex-col">
+                <span class="text-[10px] uppercase font-semibold text-slate-400">Min</span>
+                <span id="minPrice" class="text-slate-900 font-extrabold">₹{{ $priceMin ?? 100 }}</span>
+            </div>
+            <span class="text-slate-300 font-light">—</span>
+            <div class="flex flex-col items-end">
+                <span class="text-[10px] uppercase font-semibold text-slate-400">Max</span>
+                <span id="maxPrice" class="text-slate-900 font-extrabold">₹{{ $priceMax ?? 5000 }}</span>
+            </div>
         </div>
     </div>
-
-    <!-- AVAILABILITY -->
-    {{-- <div>
-        <h3 class="font-semibold mb-3">Availability</h3>
-        <label class="block">
-            <input type="checkbox" class="filter-stock" value="in"> In Stock
-        </label>
-        <label class="block">
-            <input type="checkbox" class="filter-stock" value="out"> Out of Stock
-        </label>
-    </div> --}}
 
     <!-- REVIEWS -->
-    <div>
-        <h3 class="font-semibold mb-3">Reviews</h3>
-        <label class="block">
-            <input type="checkbox" class="filter-rating" value="5">
-            <span class="text-yellow-400">★★★★★</span>
-        </label>
-        <label class="block">
-            <input type="checkbox" class="filter-rating" value="4">
-            <span class="text-yellow-400">★★★★</span>☆
-        </label>
-        <label class="block">
-            <input type="checkbox" class="filter-rating" value="3">
-            <span class="text-yellow-400">★★★</span>☆☆
-        </label>
-        <label class="block">
-            <input type="checkbox" class="filter-rating" value="2">
-            <span class="text-yellow-400">★★</span>☆☆☆
-        </label>
-        <label class="block">
-            <input type="checkbox" class="filter-rating" value="1">
-            <span class="text-yellow-400">★</span>☆☆☆☆
-        </label>
+    <div class="pb-5 border-b border-slate-100">
+        <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-3">Customer Rating</h3>
+        <div class="space-y-2">
+            @for ($i = 5; $i >= 1; $i--)
+            <label class="group flex items-center gap-2.5 text-sm text-slate-600 hover:text-slate-900 cursor-pointer select-none py-0.5 transition-colors">
+                <input type="checkbox" class="filter-rating w-4 h-4 rounded border-slate-300 accent-amber-500 focus:ring-0 cursor-pointer"
+                    value="{{ $i }}">
+                <span class="flex items-center gap-1">
+                    <span class="text-amber-400 text-sm tracking-wide">
+                        @for ($s = 1; $s <= 5; $s++)
+                            {{ $s <= $i ? '★' : '☆' }}
+                            @endfor
+                            </span>
+                            <span class="text-xs text-slate-500 font-semibold ml-1">{{ $i }}.0{{ $i < 5 ? ' & up' : '' }}</span>
+                    </span>
+            </label>
+            @endfor
+        </div>
     </div>
 
-<!-- DISCOUNTS (range brackets) -->
-@if(isset($discountTiers) && $discountTiers->count())
-<div>
-    <h3 class="font-semibold mb-3">Available Discounts</h3>
-    @foreach($discountTiers as $tier)
-        <label class="block">
-            <input type="checkbox" class="filter-discount"
-                   value="{{ $tier['min'] }}-{{ $tier['max'] }}">
-            {{ $tier['label'] }} Off
-        </label>
-    @endforeach
-</div>
-@endif
+    <!-- DISCOUNTS -->
+    @if(isset($discountTiers) && $discountTiers->count())
+    <div class="pb-5">
+        <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-3">Discounts</h3>
+        <div class="space-y-2">
+            @foreach($discountTiers as $tier)
+            <label class="group flex items-center gap-2.5 text-sm text-slate-600 hover:text-slate-900 cursor-pointer select-none py-0.5 transition-colors">
+                <input type="checkbox" class="filter-discount w-4 h-4 rounded border-slate-300 accent-amber-500 focus:ring-0 cursor-pointer"
+                    value="{{ $tier['min'] }}-{{ $tier['max'] }}">
+                <span class="group-hover:translate-x-0.5 transition-transform">{{ $tier['label'] }} Off</span>
+            </label>
+            @endforeach
+        </div>
+    </div>
+    @endif
 
 </div>
 
 <style>
-    input[type=range]::-webkit-slider-thumb {
+    .range-slider {
+        -webkit-appearance: none;
         appearance: none;
-        height: 14px;
-        width: 14px;
-        background: black;
-        border-radius: 50%;
-        cursor: pointer;
-        pointer-events: auto;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        height: 20px;
+        background: transparent;
+        pointer-events: none;
+        margin: 0;
+        padding: 0;
+        outline: none;
     }
 
-    input[type=range] {
-        pointer-events: none;
+    .range-slider::-webkit-slider-runnable-track {
+        -webkit-appearance: none;
+        background: transparent;
+        height: 20px;
+        border: none;
+    }
+
+    .range-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        height: 18px;
+        width: 18px;
+        border-radius: 50%;
+        background: #ffffff;
+        border: 2.5px solid #f59e0b;
+        box-shadow: 0 1px 4px rgba(15, 23, 42, 0.25), 0 0 0 2px rgba(245, 158, 11, 0.15);
+        cursor: pointer;
+        pointer-events: auto;
+        margin-top: 1px;
+        transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.15s ease;
+    }
+
+    .range-slider::-webkit-slider-thumb:hover {
+        transform: scale(1.2);
+        box-shadow: 0 2px 8px rgba(15, 23, 42, 0.25), 0 0 0 4px rgba(245, 158, 11, 0.25);
+    }
+
+    .range-slider::-webkit-slider-thumb:active {
+        transform: scale(1.25);
+        cursor: grabbing;
+    }
+
+    .range-slider::-moz-range-track {
+        background: transparent;
+        height: 20px;
+        border: none;
+    }
+
+    .range-slider::-moz-range-thumb {
+        appearance: none;
+        height: 18px;
+        width: 18px;
+        border-radius: 50%;
+        background: #ffffff;
+        border: 2.5px solid #f59e0b;
+        box-shadow: 0 1px 4px rgba(15, 23, 42, 0.25), 0 0 0 2px rgba(245, 158, 11, 0.15);
+        cursor: pointer;
+        pointer-events: auto;
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .range-slider::-moz-range-thumb:hover {
+        transform: scale(1.2);
+        box-shadow: 0 2px 8px rgba(15, 23, 42, 0.25), 0 0 0 4px rgba(245, 158, 11, 0.25);
+    }
+
+    .range-slider::-moz-range-thumb:active {
+        transform: scale(1.25);
+        cursor: grabbing;
     }
 </style>
 
@@ -137,14 +221,13 @@
         const maxRange = document.getElementById("maxRange");
         const minPriceLbl = document.getElementById("minPrice");
         const maxPriceLbl = document.getElementById("maxPrice");
-        const minTooltip = document.getElementById("minTooltip");
-        const maxTooltip = document.getElementById("maxTooltip");
         const rangeTrack = document.getElementById("rangeTrack");
+        const resetBtn = document.getElementById("resetPriceBtn");
 
         if (!minRange || !maxRange) return;
 
-        const min = parseInt(minRange.min);
-        const max = parseInt(maxRange.max);
+        const baseMin = parseInt(minRange.min) || 0;
+        const baseMax = parseInt(maxRange.max) || 5000;
         const gap = 50;
 
         function updateSlider() {
@@ -160,23 +243,50 @@
                 maxRange.value = maxVal;
             }
 
-            const percent1 = ((minVal - min) / (max - min)) * 100;
-            const percent2 = ((maxVal - min) / (max - min)) * 100;
+            // Adjust z-index to avoid thumbs blocking each other
+            if (minVal > (baseMax - baseMin) * 0.6) {
+                minRange.style.zIndex = "25";
+                maxRange.style.zIndex = "20";
+            } else {
+                minRange.style.zIndex = "20";
+                maxRange.style.zIndex = "25";
+            }
 
-            rangeTrack.style.left = percent1 + "%";
-            rangeTrack.style.width = (percent2 - percent1) + "%";
+            const denom = (baseMax - baseMin) || 1;
+            const percent1 = Math.max(0, Math.min(100, ((minVal - baseMin) / denom) * 100));
+            const percent2 = Math.max(0, Math.min(100, ((maxVal - baseMin) / denom) * 100));
 
-            minTooltip.style.left = percent1 + "%";
-            maxTooltip.style.left = percent2 + "%";
+            if (rangeTrack) {
+                rangeTrack.style.left = percent1 + "%";
+                rangeTrack.style.width = (percent2 - percent1) + "%";
+            }
 
-            minTooltip.innerHTML = "₹" + minVal;
-            maxTooltip.innerHTML = "₹" + maxVal;
-            minPriceLbl.innerHTML = "₹" + minVal;
-            maxPriceLbl.innerHTML = "₹" + maxVal;
+            if (minPriceLbl) minPriceLbl.textContent = "₹" + minVal.toLocaleString('en-IN');
+            if (maxPriceLbl) maxPriceLbl.textContent = "₹" + maxVal.toLocaleString('en-IN');
+        }
+
+        function triggerFilter() {
+            minRange.dispatchEvent(new Event("input", {
+                bubbles: true
+            }));
+            minRange.dispatchEvent(new Event("change", {
+                bubbles: true
+            }));
         }
 
         minRange.addEventListener("input", updateSlider);
         maxRange.addEventListener("input", updateSlider);
+
+        // Reset button
+        if (resetBtn) {
+            resetBtn.addEventListener("click", () => {
+                minRange.value = baseMin;
+                maxRange.value = baseMax;
+                updateSlider();
+                triggerFilter();
+            });
+        }
+
         updateSlider();
     })();
 </script>

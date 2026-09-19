@@ -17,7 +17,7 @@
             <div class="w-full bg-white p-6 rounded-xl">
 
                 @if(session('success'))
-                    <div class="mb-4 text-sm text-green-600 font-medium">{{ session('success') }}</div>
+                <div class="mb-4 text-sm text-green-600 font-medium">{{ session('success') }}</div>
                 @endif
 
                 <!-- Support Form -->
@@ -27,7 +27,7 @@
                     <textarea name="description" placeholder="Explain About Your Problem" required
                         class="w-full h-28 rounded-xl border border-gray-300 px-4 py-3 text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black resize-none">{{ old('description') }}</textarea>
                     @error('description')
-                        <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
+                    <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
                     @enderror
                     <p class="mt-4 text-sm font-medium text-gray-700">
                         Add An Image To Provide More Details
@@ -59,7 +59,7 @@
                         <p id="previewFileName" class="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-xs px-3 py-1 truncate"></p>
                     </div>
                     @error('image')
-                        <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
+                    <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
                     @enderror
                     <button type="submit"
                         class="mt-4 bg-black text-white text-sm font-medium px-10 py-3 rounded-full hover:bg-gray-900 transition">
@@ -99,20 +99,20 @@
 
                                 <div class="w-full md:w-auto flex md:block items-center justify-between md:text-right gap-3">
                                     @php
-                                        $statusMap = [
-                                            'pending'     => 'bg-gray-100 text-gray-600',
-                                            'in_progress' => 'bg-orange-100 text-orange-600',
-                                            'on_hold'     => 'bg-red-100 text-red-500',
-                                            'resolved'    => 'bg-green-100 text-green-600',
-                                            'rejected'    => 'bg-red-100 text-red-600',
-                                        ];
-                                        $statusLabel = [
-                                            'pending'     => 'Pending',
-                                            'in_progress' => 'In Progress',
-                                            'on_hold'     => 'On Hold',
-                                            'resolved'    => 'Resolved',
-                                            'rejected'    => 'Rejected',
-                                        ];
+                                    $statusMap = [
+                                    'pending' => 'bg-gray-100 text-gray-600',
+                                    'in_progress' => 'bg-orange-100 text-orange-600',
+                                    'on_hold' => 'bg-red-100 text-red-500',
+                                    'resolved' => 'bg-green-100 text-green-600',
+                                    'rejected' => 'bg-red-100 text-red-600',
+                                    ];
+                                    $statusLabel = [
+                                    'pending' => 'Pending',
+                                    'in_progress' => 'In Progress',
+                                    'on_hold' => 'On Hold',
+                                    'resolved' => 'Resolved',
+                                    'rejected' => 'Rejected',
+                                    ];
                                     @endphp
                                     <span class="inline-flex items-center justify-center px-4 py-1 rounded-full text-xs font-medium {{ $statusMap[$ticket->status] ?? 'bg-gray-100 text-gray-600' }}">
                                         {{ $statusLabel[$ticket->status] ?? ucfirst($ticket->status) }}
@@ -138,15 +138,15 @@
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const fileInput   = document.getElementById('ticketImage');
-        const uploadArea  = document.getElementById('uploadArea');
+    document.addEventListener("DOMContentLoaded", function() {
+        const fileInput = document.getElementById('ticketImage');
+        const uploadArea = document.getElementById('uploadArea');
         const previewArea = document.getElementById('previewArea');
-        const previewImg  = document.getElementById('previewImg');
+        const previewImg = document.getElementById('previewImg');
         const previewName = document.getElementById('previewFileName');
-        const removeBtn   = document.getElementById('removeImageBtn');
+        const removeBtn = document.getElementById('removeImageBtn');
 
-        fileInput.addEventListener('change', function () {
+        fileInput.addEventListener('change', function() {
             const file = this.files[0];
             if (!file) return;
 
@@ -163,7 +163,7 @@
             }
 
             const reader = new FileReader();
-            reader.onload = function (e) {
+            reader.onload = function(e) {
                 previewImg.src = e.target.result;
                 previewName.textContent = file.name;
                 uploadArea.classList.add('hidden');
@@ -172,7 +172,7 @@
             reader.readAsDataURL(file);
         });
 
-        removeBtn.addEventListener('click', function () {
+        removeBtn.addEventListener('click', function() {
             fileInput.value = '';
             previewImg.src = '';
             previewArea.classList.add('hidden');

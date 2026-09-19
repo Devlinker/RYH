@@ -1,11 +1,12 @@
-<div class="max-w-7xl mx-auto px-4 md:px-16 py-8">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
-    <div class="flex flex-col md:flex-row gap-8">
+    <div class="flex flex-col md:flex-row gap-8 items-start">
 
+        <!-- MOBILE FILTER TRIGGER -->
         <div class="md:hidden w-full">
             <button id="openFilter"
-                class="w-full border rounded-lg py-3 font-semibold flex justify-center items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                class="w-full border border-slate-200 bg-white text-slate-800 rounded-xl py-3 font-bold text-sm flex justify-center items-center gap-2 shadow-sm hover:border-slate-900 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-amber-500" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2l-7 7v5l-4 2v-7L3 6V4z" />
@@ -14,62 +15,63 @@
             </button>
         </div>
 
-        <!-- LEFT FILTER SECTION -->
+        <!-- LEFT FILTER SIDEBAR -->
         <div id="filterSidebar"
-            class="fixed md:static top-0 left-0 h-full md:h-auto w-full md:w-[15%] bg-white z-50 md:z-auto
-                    transform -translate-x-full md:translate-x-0 transition-transform duration-300 overflow-y-auto">
+            class="fixed md:sticky md:top-24 left-0 h-full md:h-auto w-full md:w-64 lg:w-60 bg-white z-50 md:z-auto flex-shrink-0
+                   transform -translate-x-full md:translate-x-0 transition-transform duration-300 overflow-y-auto p-5 md:p-0 border-r md:border-r-0 border-slate-200 md:border-transparent">
             @include('frontend.shop.shopfilter')
         </div>
 
         <!-- RIGHT PRODUCT SECTION -->
-        <div class="w-full md:w-[85%]">
+        <div class="flex-1 min-w-0 w-full relative">
 
-            <!-- Title -->
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-[20px] gap-4">
-                <h3 class="text-md font-semibold">
-                    Showing <span id="resultCount">0</span> Results
+            <!-- Title & Search Bar -->
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+                <h3 class="text-base sm:text-lg font-bold text-slate-900 tracking-tight flex items-center gap-2">
+                    Showing <span id="resultCount" class="inline-flex items-center justify-center px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-amber-100 text-amber-900 border border-amber-200">0</span> Results
                 </h3>
 
                 <!-- Search Box -->
-                <div class="flex items-center bg-gray-100 rounded-full pl-4 shadow-sm w-full md:w-[30%]">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 mr-3" fill="none"
+                <div class="flex items-center bg-slate-50 border border-slate-200 rounded-full pl-4 pr-1.5 py-1 shadow-sm w-full sm:w-80 md:w-96 focus-within:border-slate-900 focus-within:bg-white focus-within:ring-2 focus-within:ring-slate-900/5 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-400 mr-2.5 flex-shrink-0" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M21 21l-4.35-4.35m2.1-5.4a7.5 7.5 0 11-15 0 7.5 7.5 0 0115 0z" />
                     </svg>
-                    <input type="text" id="searchInput" placeholder="Search your Clothing"
+                    <input type="text" id="searchInput" placeholder="Search clothing..."
                         value="{{ request('search') }}"
-                        class="flex-1 bg-transparent outline-none text-gray-600 placeholder-gray-400">
+                        class="flex-1 bg-transparent outline-none text-slate-800 placeholder-slate-400 text-sm font-medium">
                     <button type="button" id="searchBtn"
-                        class="bg-black text-white px-5 py-1.5 rounded-full hover:bg-gray-800">
+                        class="bg-[#0f172a] text-white text-xs sm:text-sm font-bold px-4 sm:px-5 py-2 rounded-full hover:bg-amber-500 hover:text-black transition-all duration-200 shadow-sm active:scale-95">
                         Search
                     </button>
                 </div>
             </div>
 
-            <div id="activeFiltersContainer" class="flex items-center flex-wrap gap-2 mt-4 mb-4 hidden">
-                <span class="text-gray-500 mr-2">Active Filters</span>
-                <div id="activeFilters" class="flex font-medium flex-wrap gap-2"></div>
-                <button id="clearAllFilters" class="text-gray-400 underline text-sm ml-3 hover:text-black">
+            <!-- Active Filters Row -->
+            <div id="activeFiltersContainer" class="flex items-center flex-wrap gap-2 mb-6 hidden">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-400 mr-1">Active:</span>
+                <div id="activeFilters" class="flex items-center flex-wrap gap-2"></div>
+                <button id="clearAllFilters" class="text-xs font-bold text-slate-400 hover:text-amber-600 underline ml-2 uppercase tracking-wider transition-colors">
                     Clear All
                 </button>
             </div>
 
             <!-- NO PRODUCTS MESSAGE -->
-            <div id="noProductsMessage" class="hidden flex items-center justify-center px-4 py-16">
-                <div class="max-w-4xl w-full rounded-2xl p-8 text-center">
-                    <div class="flex justify-center mb-6">
-                        <img src="{{ asset('assets/images/searchresult.svg') }}" class="w-full max-w-sm">
+            <div id="noProductsMessage" class="hidden flex items-center justify-center px-4 py-12">
+                <div class="max-w-md w-full rounded-3xl bg-slate-50 border border-slate-200/80 p-8 sm:p-10 text-center">
+                    <div class="flex justify-center mb-5">
+                        <img src="{{ asset('assets/images/searchresult.svg') }}" class="w-48 h-auto object-contain" alt="No products">
                     </div>
                     <div>
-                        <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-3">
-                            No matching search result
+                        <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 mb-2">
+                            No matching results
                         </h2>
-                        <p class="text-gray-500 mb-1">
-                            Try again using more general search terms
+                        <p class="text-sm text-slate-500 mb-6">
+                            Try adjusting your filters or search keywords to find what you're looking for.
                         </p>
                         <button id="clearAllFiltersBtn2"
-                            class="inline-block mt-4 bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition">
+                            class="inline-flex items-center justify-center bg-[#0f172a] text-white text-xs sm:text-sm font-bold px-6 py-2.5 rounded-full hover:bg-amber-500 hover:text-black transition-all duration-200 shadow-sm active:scale-95">
                             Clear All Filters
                         </button>
                     </div>
@@ -78,26 +80,24 @@
 
             <!-- LOADER -->
             <div id="productLoader"
-                class="hidden absolute inset-0 bg-gray-200/60 backdrop-blur-sm flex items-center justify-center z-50">
-                <div class="w-12 h-12 border-4 border-gray-300 border-t-black rounded-full animate-spin"></div>
+                class="hidden absolute inset-0 bg-white/70 backdrop-blur-xs flex items-center justify-center z-40 rounded-2xl">
+                <div class="w-10 h-10 border-4 border-slate-200 border-t-amber-500 rounded-full animate-spin"></div>
             </div>
 
             <!-- PRODUCT GRID -->
             <div id="productGrid"
-                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 overflow-auto pr-[5px]
-                [&::-webkit-scrollbar]:w-[4px] [&::-webkit-scrollbar-thumb]:bg-gray-400
-                [&::-webkit-scrollbar-thumb]:rounded-lg">
+                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 overflow-auto pr-[2px]">
 
                 @forelse($products as $product)
-                    @include('frontend.components.productcard', ['product' => $product])
+                @include('frontend.components.productcard', ['product' => $product])
                 @empty
-                    <p class="col-span-full text-center text-gray-500">No products found.</p>
+                <p class="col-span-full text-center text-slate-400 py-12">No products found.</p>
                 @endforelse
 
             </div>
 
             <!-- PAGINATION -->
-            <div id="pagination" class="flex justify-center mt-10 gap-2"></div>
+            <div id="pagination" class="flex justify-center items-center mt-10 gap-2 flex-wrap"></div>
 
         </div>
     </div>
@@ -150,7 +150,7 @@
         }
 
         function filterProducts() {
-            loader.classList.remove("hidden");
+            if (loader) loader.classList.remove("hidden");
 
             setTimeout(() => {
                 try {
@@ -172,24 +172,22 @@
                         const category = (product.dataset.category || "").toLowerCase();
                         const fabric = product.dataset.fabric || "";
                         const productMin = parseNumber(product.dataset.priceMin);
-                        const productMax = parseNumber(product.dataset.priceMax || product
-                            .dataset.priceMin);
+                        const productMax = parseNumber(product.dataset.priceMax || product.dataset.priceMin);
                         const rating = parseNumber(product.dataset.rating);
                         const discount = parseNumber(product.dataset.discount);
                         const stock = product.dataset.stock || "";
 
                         let show = true;
 
-                        if (searchValue && !name.includes(searchValue) && !category.includes(
-                                searchValue)) {
+                        if (searchValue && !name.includes(searchValue) && !category.includes(searchValue)) {
                             show = false;
                         }
                         if (selectedCategories.length && !selectedCategories.includes(category))
                             show = false;
-                        if (selectedFabric.length && !selectedFabric.includes(fabric)) show =
-                            false;
-                        if (selectedStock.length && !selectedStock.includes(stock)) show =
-                        false;
+                        if (selectedFabric.length && !selectedFabric.includes(fabric))
+                            show = false;
+                        if (selectedStock.length && !selectedStock.includes(stock))
+                            show = false;
 
                         if (selectedDiscount.length) {
                             const passesDiscount = selectedDiscount.some(range => {
@@ -200,8 +198,7 @@
                         }
 
                         if (selectedRatings.length) {
-                            const passesRating = selectedRatings.some(r => Math.floor(
-                                rating) === parseInt(r));
+                            const passesRating = selectedRatings.some(r => Math.floor(rating) === parseInt(r));
                             if (!passesRating) show = false;
                         }
 
@@ -212,27 +209,28 @@
                         product.style.display = "none";
                     });
 
-                    resultCount.innerText = visibleProducts.length;
+                    if (resultCount) resultCount.innerText = visibleProducts.length;
 
                     if (visibleProducts.length === 0) {
-                        noProductsMessage.classList.remove("hidden");
-                        productGrid.classList.add("hidden");
-                        pagination.innerHTML = "";
+                        if (noProductsMessage) noProductsMessage.classList.remove("hidden");
+                        if (productGrid) productGrid.classList.add("hidden");
+                        if (pagination) pagination.innerHTML = "";
                     } else {
-                        noProductsMessage.classList.add("hidden");
-                        productGrid.classList.remove("hidden");
+                        if (noProductsMessage) noProductsMessage.classList.add("hidden");
+                        if (productGrid) productGrid.classList.remove("hidden");
                     }
 
                     renderPagination(visibleProducts);
                     updateActiveFilters();
 
                 } finally {
-                    loader.classList.add("hidden");
+                    if (loader) loader.classList.add("hidden");
                 }
-            }, 400);
+            }, 300);
         }
 
         function updateActiveFilters() {
+            if (!activeFiltersDiv) return;
             activeFiltersDiv.innerHTML = "";
 
             const allFilters = document.querySelectorAll(
@@ -246,9 +244,9 @@
                     hasFilters = true;
                     const chip = document.createElement("div");
                     chip.className =
-                        "flex items-center gap-2 bg-black text-white px-3 py-1 rounded-full text-sm";
+                        "inline-flex items-center gap-1.5 bg-[#0f172a] text-white pl-3 pr-2 py-1 rounded-full text-xs font-semibold shadow-sm transition-all hover:bg-slate-800";
                     chip.innerHTML =
-                        `${filter.parentElement.textContent.trim()} <span class="cursor-pointer">✕</span>`;
+                        `${filter.parentElement.textContent.trim()} <span class="text-amber-400 hover:text-white cursor-pointer font-bold ml-1">✕</span>`;
                     chip.querySelector("span").addEventListener("click", () => {
                         filter.checked = false;
                         currentPage = 1;
@@ -258,10 +256,13 @@
                 }
             });
 
-            activeFiltersContainer.classList.toggle("hidden", !hasFilters);
+            if (activeFiltersContainer) {
+                activeFiltersContainer.classList.toggle("hidden", !hasFilters);
+            }
         }
 
         function renderPagination(list) {
+            if (!pagination) return;
             pagination.innerHTML = "";
 
             const start = (currentPage - 1) * itemsPerPage;
@@ -277,10 +278,20 @@
                 const btn = document.createElement("button");
                 btn.innerText = i;
                 btn.className =
-                    `px-3 py-1 border rounded ${i === currentPage ? 'bg-black text-white' : 'bg-white'}`;
+                    `px-3.5 py-1.5 text-xs sm:text-sm font-bold rounded-xl border transition-all duration-200 ${
+                        i === currentPage
+                            ? 'bg-[#0f172a] text-white border-[#0f172a] shadow-sm'
+                            : 'bg-white text-slate-700 border-slate-200 hover:border-amber-500 hover:text-amber-600 hover:bg-amber-50/40'
+                    }`;
                 btn.addEventListener("click", () => {
                     currentPage = i;
                     renderPagination(list);
+                    if (productGrid) {
+                        window.scrollTo({
+                            top: productGrid.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
                 });
                 pagination.appendChild(btn);
             }
@@ -288,7 +299,7 @@
             function createDots() {
                 const dots = document.createElement("span");
                 dots.innerText = "...";
-                dots.className = "px-2";
+                dots.className = "px-2 text-slate-400 font-bold self-center";
                 pagination.appendChild(dots);
             }
 
@@ -317,20 +328,26 @@
             filterProducts();
         });
 
-        searchBtn.addEventListener("click", () => {
-            currentPage = 1;
-            filterProducts();
-        });
-        searchInput.addEventListener("keyup", () => {
-            currentPage = 1;
-            filterProducts();
-        });
+        if (searchBtn) {
+            searchBtn.addEventListener("click", () => {
+                currentPage = 1;
+                filterProducts();
+            });
+        }
+        if (searchInput) {
+            searchInput.addEventListener("keyup", (e) => {
+                if (e.key === "Enter") {
+                    currentPage = 1;
+                    filterProducts();
+                }
+            });
+        }
 
         function clearAll() {
             document.querySelectorAll(
                     ".filter-category, .filter-fabric, .filter-stock, .filter-discount, .filter-rating")
                 .forEach(filter => filter.checked = false);
-            searchInput.value = "";
+            if (searchInput) searchInput.value = "";
             currentPage = 1;
             filterProducts();
         }
@@ -348,12 +365,12 @@
     const closeFilter = document.getElementById("closeFilter");
     const filterSidebar = document.getElementById("filterSidebar");
 
-    if (openFilter) {
+    if (openFilter && filterSidebar) {
         openFilter.addEventListener("click", () => {
             filterSidebar.classList.remove("-translate-x-full");
         });
     }
-    if (closeFilter) {
+    if (closeFilter && filterSidebar) {
         closeFilter.addEventListener("click", () => {
             filterSidebar.classList.add("-translate-x-full");
         });

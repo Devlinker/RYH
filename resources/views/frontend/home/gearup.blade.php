@@ -18,27 +18,27 @@
             {{-- Right: arrows + VIEW ALL --}}
             <div class="flex items-center gap-3 flex-shrink-0">
                 <button id="gu-prev" aria-label="Previous"
-                        class="w-10 h-10 flex items-center justify-center rounded-full
+                    class="w-10 h-10 flex items-center justify-center rounded-full
                                border border-slate-200 bg-white text-slate-700 shadow-sm
                                transition-all duration-200
                                hover:border-slate-900 hover:text-slate-900 hover:bg-slate-50 active:scale-95
                                disabled:opacity-30 disabled:cursor-not-allowed">
                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                        <polyline points="15 18 9 12 15 6"/>
+                        <polyline points="15 18 9 12 15 6" />
                     </svg>
                 </button>
                 <button id="gu-next" aria-label="Next"
-                        class="w-10 h-10 flex items-center justify-center rounded-full
+                    class="w-10 h-10 flex items-center justify-center rounded-full
                                bg-[#0f172a] text-white shadow-sm
                                transition-all duration-200
                                hover:bg-amber-500 hover:text-black active:scale-95
                                disabled:opacity-30 disabled:cursor-not-allowed">
                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                        <polyline points="9 18 15 12 9 6"/>
+                        <polyline points="9 18 15 12 9 6" />
                     </svg>
                 </button>
                 <a href="/shop"
-                   class="hidden sm:inline-flex items-center gap-2 no-underline
+                    class="hidden sm:inline-flex items-center gap-2 no-underline
                           px-6 py-2.5 rounded-full
                           border-2 border-slate-900 bg-white
                           text-[0.78rem] font-bold uppercase tracking-widest text-slate-900
@@ -51,8 +51,8 @@
 
         {{-- ── Slider Track ── --}}
         <div id="gu-track"
-             class="flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2"
-             style="-ms-overflow-style:none;scrollbar-width:none;">
+            class="flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2"
+            style="-ms-overflow-style:none;scrollbar-width:none;">
 
             @forelse ($products as $product)
             @php
@@ -156,21 +156,21 @@
                     {{-- Price --}}
                     <div class="flex items-baseline flex-wrap gap-1.5 min-w-0">
                         @if ($hasRange)
-                            <span class="text-[0.95rem] sm:text-[1.05rem] font-extrabold text-slate-900 whitespace-nowrap">
-                                ₹{{ number_format($priceMin, 0) }} – ₹{{ number_format($priceMax, 0) }}
-                            </span>
+                        <span class="text-[0.95rem] sm:text-[1.05rem] font-extrabold text-slate-900 whitespace-nowrap">
+                            ₹{{ number_format($priceMin, 0) }} – ₹{{ number_format($priceMax, 0) }}
+                        </span>
                         @else
-                            <span class="text-[0.95rem] sm:text-[1.05rem] font-extrabold text-slate-900 whitespace-nowrap">
-                                ₹{{ number_format($priceMin, 0) }}
-                            </span>
-                            @if ($oldPrice > $priceMin)
-                                <span class="text-[0.75rem] text-slate-400 line-through whitespace-nowrap">
-                                    ₹{{ number_format($oldPrice, 0) }}
-                                </span>
-                            @endif
+                        <span class="text-[0.95rem] sm:text-[1.05rem] font-extrabold text-slate-900 whitespace-nowrap">
+                            ₹{{ number_format($priceMin, 0) }}
+                        </span>
+                        @if ($oldPrice > $priceMin)
+                        <span class="text-[0.75rem] text-slate-400 line-through whitespace-nowrap">
+                            ₹{{ number_format($oldPrice, 0) }}
+                        </span>
+                        @endif
                         @endif
                         @if ($isBulk && $perPiecePrice > 0)
-                            <span class="text-[0.62rem] font-bold bg-blue-600 text-white px-1.5 py-0.5 rounded whitespace-nowrap">Bulk</span>
+                        <span class="text-[0.62rem] font-bold bg-blue-600 text-white px-1.5 py-0.5 rounded whitespace-nowrap">Bulk</span>
                         @endif
                     </div>
 
@@ -181,7 +181,7 @@
                         </svg>
                         <span class="text-[0.78rem] font-bold text-slate-800">{{ $rating }}</span>
                         @if ($ratingCount > 0)
-                            <span class="text-[0.68rem] text-slate-400 hidden sm:inline">({{ $ratingCount }})</span>
+                        <span class="text-[0.68rem] text-slate-400 hidden sm:inline">({{ $ratingCount }})</span>
                         @endif
                     </div>
                 </div>
@@ -209,13 +209,15 @@
         {{-- Timer bar only (hidden, drives auto-advance JS) --}}
         <div class="hidden">
             <span id="gu-pulse"></span>
-            <div><div id="gu-timer-bar" style="width:0%"></div></div>
+            <div>
+                <div id="gu-timer-bar" style="width:0%"></div>
+            </div>
         </div>
 
         {{-- Mobile View All --}}
         <div class="text-center mt-8 sm:hidden">
             <a href="/shop"
-               class="inline-flex items-center gap-2 no-underline
+                class="inline-flex items-center gap-2 no-underline
                       px-7 py-2.5 rounded-full border-2 border-slate-900 bg-white
                       text-[0.80rem] font-bold uppercase tracking-widest text-slate-900
                       transition-all duration-200 hover:bg-slate-900 hover:text-white shadow-sm">
@@ -227,152 +229,206 @@
 </section>
 
 <style>
-/* Light section background */
-.gu-section {
-    background: #ffffff;
-}
+    /* Light section background */
+    .gu-section {
+        background: #ffffff;
+    }
 
-/* Hide native scrollbar */
-#gu-track::-webkit-scrollbar { display: none; }
+    /* Hide native scrollbar */
+    #gu-track::-webkit-scrollbar {
+        display: none;
+    }
 
-/* Cart overlay slide-up */
-.gc-overlay {
-    transform: translateY(110%);
-    transition: transform 0.30s cubic-bezier(0.34, 1.3, 0.64, 1);
-}
-.group:hover .gc-overlay { transform: translateY(0); }
+    /* Cart overlay slide-up */
+    .gc-overlay {
+        transform: translateY(110%);
+        transition: transform 0.30s cubic-bezier(0.34, 1.3, 0.64, 1);
+    }
 
-/* Card entrance animation */
-@keyframes guFadeUp {
-    from { opacity:0; transform:translateY(24px); }
-    to   { opacity:1; transform:translateY(0);    }
-}
-[data-card]        { opacity: 0; }
-[data-card].gu-in  { animation: guFadeUp 0.45s cubic-bezier(0.22,1,0.36,1) forwards; }
+    .group:hover .gc-overlay {
+        transform: translateY(0);
+    }
 
+    /* Card entrance animation */
+    @keyframes guFadeUp {
+        from {
+            opacity: 0;
+            transform: translateY(24px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    [data-card] {
+        opacity: 0;
+    }
+
+    [data-card].gu-in {
+        animation: guFadeUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
 </style>
 
 <script>
-(function () {
-    const INTERVAL = 5000;
-    const track    = document.getElementById('gu-track');
-    const btnPrev  = document.getElementById('gu-prev');
-    const btnNext  = document.getElementById('gu-next');
-    const timerBar = document.getElementById('gu-timer-bar');
-    const pulse    = document.getElementById('gu-pulse');
-    const cards    = Array.from(track ? track.querySelectorAll('[data-card]') : []);
-    if (!track || !cards.length) return;
+    (function() {
+        const INTERVAL = 5000;
+        const track = document.getElementById('gu-track');
+        const btnPrev = document.getElementById('gu-prev');
+        const btnNext = document.getElementById('gu-next');
+        const timerBar = document.getElementById('gu-timer-bar');
+        const pulse = document.getElementById('gu-pulse');
+        const cards = Array.from(track ? track.querySelectorAll('[data-card]') : []);
+        if (!track || !cards.length) return;
 
-    /* ── Entrance animation ── */
-    const io = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-            if (e.isIntersecting) { e.target.classList.add('gu-in'); io.unobserve(e.target); }
+        /* ── Entrance animation ── */
+        const io = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('gu-in');
+                    io.unobserve(e.target);
+                }
+            });
+        }, {
+            threshold: 0.1
         });
-    }, { threshold: 0.1 });
-    cards.forEach((c, i) => { c.style.animationDelay = i * 80 + 'ms'; io.observe(c); });
+        cards.forEach((c, i) => {
+            c.style.animationDelay = i * 80 + 'ms';
+            io.observe(c);
+        });
 
-    /* ── Helpers: ONE card at a time ── */
-    const GAP    = 20; // matches gap-5 (20px)
-    const cardW  = () => (cards[0]?.offsetWidth ?? 220) + GAP;
-    const total  = cards.length;
+        /* ── Helpers: ONE card at a time ── */
+        const GAP = 20; // matches gap-5 (20px)
+        const cardW = () => (cards[0]?.offsetWidth ?? 220) + GAP;
+        const total = cards.length;
 
-    // Which card index is currently "active" (leftmost fully visible)
-    const curIdx = () => Math.round(track.scrollLeft / cardW());
+        // Which card index is currently "active" (leftmost fully visible)
+        const curIdx = () => Math.round(track.scrollLeft / cardW());
 
-    // Scroll to exact card index
-    function scrollToCard(idx) {
-        const clamped = Math.max(0, Math.min(idx, total - 1));
-        track.scrollTo({ left: clamped * cardW(), behavior: 'smooth' });
-    }
-
-    /* ── Sync UI on scroll ── */
-    function syncUI() {
-        const max = track.scrollWidth - track.clientWidth;
-        btnPrev.disabled = track.scrollLeft <= 2;
-        btnNext.disabled = track.scrollLeft >= max - 2;
-    }
-    track.addEventListener('scroll', syncUI, { passive: true });
-    syncUI();
-
-    /* ── Arrow buttons: one card at a time ── */
-    btnPrev.addEventListener('click', () => scrollToCard(curIdx() - 1));
-    btnNext.addEventListener('click', () => scrollToCard(curIdx() + 1));
-
-    /* ── Auto-advance: one card at a time ── */
-    let paused = false, rafId = null, startTs = null, elapsed = 0;
-
-    function tick(now) {
-        if (paused) return;
-        if (!startTs) startTs = now;
-        elapsed = now - startTs;
-        timerBar.style.width = Math.min((elapsed / INTERVAL) * 100, 100) + '%';
-        if (elapsed >= INTERVAL) {
-            const next = (curIdx() + 1) % total; // wrap around
-            scrollToCard(next);
-            resetTimer();
-            return;
+        // Scroll to exact card index
+        function scrollToCard(idx) {
+            const clamped = Math.max(0, Math.min(idx, total - 1));
+            track.scrollTo({
+                left: clamped * cardW(),
+                behavior: 'smooth'
+            });
         }
-        rafId = requestAnimationFrame(tick);
-    }
 
-    function resetTimer() {
-        cancelAnimationFrame(rafId);
-        startTs = null; elapsed = 0;
-        timerBar.style.transition = 'none';
-        timerBar.style.width = '0%';
-        requestAnimationFrame(() => {
-            timerBar.style.transition = '';
-            rafId = requestAnimationFrame(tick);
+        /* ── Sync UI on scroll ── */
+        function syncUI() {
+            const max = track.scrollWidth - track.clientWidth;
+            btnPrev.disabled = track.scrollLeft <= 2;
+            btnNext.disabled = track.scrollLeft >= max - 2;
+        }
+        track.addEventListener('scroll', syncUI, {
+            passive: true
         });
-    }
+        syncUI();
 
-    function pause() {
-        if (paused) return;
-        paused = true;
-        cancelAnimationFrame(rafId);
-        pulse.style.background = '#6b7280';
-        pulse.style.boxShadow  = 'none';
-    }
-    function resume() {
-        if (!paused) return;
-        paused = false;
-        pulse.style.background = '';
-        pulse.style.boxShadow  = '';
-        startTs = null;
+        /* ── Arrow buttons: one card at a time ── */
+        btnPrev.addEventListener('click', () => scrollToCard(curIdx() - 1));
+        btnNext.addEventListener('click', () => scrollToCard(curIdx() + 1));
+
+        /* ── Auto-advance: one card at a time ── */
+        let paused = false,
+            rafId = null,
+            startTs = null,
+            elapsed = 0;
+
+        function tick(now) {
+            if (paused) return;
+            if (!startTs) startTs = now;
+            elapsed = now - startTs;
+            timerBar.style.width = Math.min((elapsed / INTERVAL) * 100, 100) + '%';
+            if (elapsed >= INTERVAL) {
+                const next = (curIdx() + 1) % total; // wrap around
+                scrollToCard(next);
+                resetTimer();
+                return;
+            }
+            rafId = requestAnimationFrame(tick);
+        }
+
+        function resetTimer() {
+            cancelAnimationFrame(rafId);
+            startTs = null;
+            elapsed = 0;
+            timerBar.style.transition = 'none';
+            timerBar.style.width = '0%';
+            requestAnimationFrame(() => {
+                timerBar.style.transition = '';
+                rafId = requestAnimationFrame(tick);
+            });
+        }
+
+        function pause() {
+            if (paused) return;
+            paused = true;
+            cancelAnimationFrame(rafId);
+            pulse.style.background = '#6b7280';
+            pulse.style.boxShadow = 'none';
+        }
+
+        function resume() {
+            if (!paused) return;
+            paused = false;
+            pulse.style.background = '';
+            pulse.style.boxShadow = '';
+            startTs = null;
+            rafId = requestAnimationFrame(tick);
+        }
+
+        track.addEventListener('mouseenter', pause);
+        track.addEventListener('mouseleave', resume);
+
         rafId = requestAnimationFrame(tick);
+
+        /* ── Drag-to-scroll ── */
+        let isDown = false,
+            dragStartX = 0,
+            dragScrollLeft = 0;
+        track.addEventListener('mousedown', e => {
+            isDown = true;
+            dragStartX = e.pageX - track.offsetLeft;
+            dragScrollLeft = track.scrollLeft;
+            track.style.cursor = 'grabbing';
+            pause();
+        });
+        track.addEventListener('mouseleave', () => {
+            isDown = false;
+            track.style.cursor = '';
+        });
+        track.addEventListener('mouseup', () => {
+            isDown = false;
+            track.style.cursor = '';
+            resume();
+        });
+        track.addEventListener('mousemove', e => {
+            if (!isDown) return;
+            e.preventDefault();
+            track.scrollLeft = dragScrollLeft - (e.pageX - track.offsetLeft - dragStartX);
+        });
+    })();
+
+
+    /* ── Add to Cart ── */
+    function addToCartFromCard(e, productId) {
+        e.preventDefault();
+        e.stopPropagation();
+        const pill = e.currentTarget.querySelector('.gc-cart-pill');
+        if (!pill || pill.dataset.adding) return;
+        pill.dataset.adding = '1';
+        const orig = pill.innerHTML;
+        pill.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:14px;height:14px;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Added!`;
+        pill.style.background = '#16a34a';
+        pill.style.color = '#fff';
+        setTimeout(() => {
+            pill.innerHTML = orig;
+            pill.style.background = '';
+            pill.style.color = '';
+            delete pill.dataset.adding;
+        }, 1600);
+        // fetch('/cart/add', { method:'POST', headers:{'Content-Type':'application/json','X-CSRF-TOKEN':document.querySelector('meta[name=csrf-token]').content}, body: JSON.stringify({product_id: productId, quantity: 1}) });
     }
-
-    track.addEventListener('mouseenter', pause);
-    track.addEventListener('mouseleave', resume);
-
-    rafId = requestAnimationFrame(tick);
-
-    /* ── Drag-to-scroll ── */
-    let isDown = false, dragStartX = 0, dragScrollLeft = 0;
-    track.addEventListener('mousedown',  e => { isDown = true; dragStartX = e.pageX - track.offsetLeft; dragScrollLeft = track.scrollLeft; track.style.cursor = 'grabbing'; pause(); });
-    track.addEventListener('mouseleave', () => { isDown = false; track.style.cursor = ''; });
-    track.addEventListener('mouseup',    () => { isDown = false; track.style.cursor = ''; resume(); });
-    track.addEventListener('mousemove',  e => { if (!isDown) return; e.preventDefault(); track.scrollLeft = dragScrollLeft - (e.pageX - track.offsetLeft - dragStartX); });
-})();
-
-
-/* ── Add to Cart ── */
-function addToCartFromCard(e, productId) {
-    e.preventDefault();
-    e.stopPropagation();
-    const pill = e.currentTarget.querySelector('.gc-cart-pill');
-    if (!pill || pill.dataset.adding) return;
-    pill.dataset.adding = '1';
-    const orig = pill.innerHTML;
-    pill.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:14px;height:14px;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Added!`;
-    pill.style.background = '#16a34a';
-    pill.style.color = '#fff';
-    setTimeout(() => {
-        pill.innerHTML = orig;
-        pill.style.background = '';
-        pill.style.color = '';
-        delete pill.dataset.adding;
-    }, 1600);
-    // fetch('/cart/add', { method:'POST', headers:{'Content-Type':'application/json','X-CSRF-TOKEN':document.querySelector('meta[name=csrf-token]').content}, body: JSON.stringify({product_id: productId, quantity: 1}) });
-}
 </script>

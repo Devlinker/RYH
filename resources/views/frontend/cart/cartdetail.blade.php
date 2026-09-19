@@ -425,7 +425,8 @@
                 body: JSON.stringify({})
             });
         } catch (e) {
-            /* ignore */ }
+            /* ignore */
+        }
 
         await loadCart(false, false); // reload totals without the coupon
         showToast('Coupon removed.', 'success');

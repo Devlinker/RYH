@@ -14,7 +14,7 @@
                     <input type="email" name="email" class="w-full border border-gray-300 rounded-md px-3 py-2 mt-1 focus:outline-none focus:ring-2 focus:ring-[#134074]"
                         placeholder="you@example.com" />
                     @error('email')
-                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
                 <div>
@@ -31,7 +31,7 @@
                         </button>
                     </div>
                     @error('password')
-                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
                 <button type="submit" class="w-full bg-[#363636] text-white py-2 rounded-md flex items-center justify-center gap-2 hover:bg-[#363636]" :disabled="loading">

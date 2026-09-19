@@ -130,7 +130,11 @@
                         .getSelectedId());
                 }
             },
-            selectable: {{ $selectable ?? false ? 'true' : 'false' }}
+            selectable: {
+                {
+                    $selectable ?? false ? 'true' : 'false'
+                }
+            }
         });
     });
 </script>

@@ -1,7 +1,7 @@
 <section>
     <div class="hidden sm:block w-full">
         <img
-            src="{{ asset('assets/images/bottombanner.svg') }}"
+            src="{{ asset('assets/images/bottombanner.png') }}"
             alt="Desktop Banner"
             class="w-full h-auto"
         >

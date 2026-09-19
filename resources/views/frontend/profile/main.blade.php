@@ -8,18 +8,18 @@
         <div class="w-full md:w-[40%]">
             <div class="w-full p-6">
                 @if(session('success'))
-                    <div class="mb-4 px-4 py-3 bg-green-100 text-green-700 rounded-xl text-sm">
-                        {{ session('success') }}
-                    </div>
+                <div class="mb-4 px-4 py-3 bg-green-100 text-green-700 rounded-xl text-sm">
+                    {{ session('success') }}
+                </div>
                 @endif
                 @if($errors->any())
-                    <div class="mb-4 px-4 py-3 bg-red-100 text-red-700 rounded-xl text-sm">
-                        <ul class="list-disc list-inside space-y-1">
-                            @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
+                <div class="mb-4 px-4 py-3 bg-red-100 text-red-700 rounded-xl text-sm">
+                    <ul class="list-disc list-inside space-y-1">
+                        @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
                 @endif
                 <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data" class="space-y-5">
                     @csrf
@@ -51,7 +51,7 @@
                             placeholder="Enter Your User Name"
                             class="w-full mt-2 px-4 py-3 rounded-full border @error('name') border-red-400 @else border-gray-200 @enderror focus:outline-none focus:ring-2 focus:ring-black">
                         @error('name')
-                            <p class="text-red-500 text-xs mt-1 pl-4">{{ $message }}</p>
+                        <p class="text-red-500 text-xs mt-1 pl-4">{{ $message }}</p>
                         @enderror
                     </div>
                     <div>
@@ -66,11 +66,11 @@
                                 placeholder="Enter Mobile Number"
                                 class="flex-1 px-4 py-3 outline-none">
                             @if($user->phone)
-                                <span class="text-green-500 text-xs pr-4">✔ Verified</span>
+                            <span class="text-green-500 text-xs pr-4">✔ Verified</span>
                             @endif
                         </div>
                         @error('phone')
-                            <p class="text-red-500 text-xs mt-1 pl-4">{{ $message }}</p>
+                        <p class="text-red-500 text-xs mt-1 pl-4">{{ $message }}</p>
                         @enderror
                     </div>
                     <div>
@@ -80,7 +80,7 @@
                             placeholder="Enter Your Email"
                             class="w-full mt-2 px-4 py-3 rounded-full border @error('email') border-red-400 @else border-gray-200 @enderror focus:outline-none focus:ring-2 focus:ring-black">
                         @error('email')
-                            <p class="text-red-500 text-xs mt-1 pl-4">{{ $message }}</p>
+                        <p class="text-red-500 text-xs mt-1 pl-4">{{ $message }}</p>
                         @enderror
                     </div>
                     <!-- Submit -->
@@ -102,7 +102,7 @@
 
     const defaultAvatar = "https://ui-avatars.com/api/?name={{ urlencode($user->name) }}&background=000000&color=ffffff";
 
-    fileInput.addEventListener('change', function () {
+    fileInput.addEventListener('change', function() {
         const file = this.files[0];
         if (file) {
             const reader = new FileReader();
@@ -114,7 +114,7 @@
         }
     });
 
-    removeBtn.addEventListener('click', function () {
+    removeBtn.addEventListener('click', function() {
         avatarPreview.src = defaultAvatar;
         fileInput.value = '';
         removeAvatarInput.value = '1';

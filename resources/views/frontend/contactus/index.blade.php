@@ -3,19 +3,6 @@
 @section('content')
     <section class="w-full">
 
-        <!-- Top Banner -->
-        <!-- Desktop Banner -->
-        <div class="relative hidden md:block w-full overflow-hidden">
-            <img src="{{ asset('assets/images/contact-banner.png') }}" alt="Desktop Banner"
-                class="w-full h-[260px] object-cover">
-
-            <!-- Overlay -->
-            <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
-                <h1 class="text-white text-3xl md:text-5xl font-semibold">
-                    Contact us
-                </h1>
-            </div>
-        </div>
 
         <!-- Mobile Banner -->
         <div class="relative block md:hidden w-full overflow-hidden">

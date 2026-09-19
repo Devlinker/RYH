@@ -24,12 +24,12 @@
                 <div id="starRating" class="flex gap-2 text-xl sm:text-2xl text-gray-300">
                     @for ($i = 1; $i <= 5; $i++)
                         <i class="fa-regular fa-star cursor-pointer hover:text-yellow-400"
-                           data-value="{{ $i }}"></i>
-                    @endfor
+                        data-value="{{ $i }}"></i>
+                        @endfor
                 </div>
                 <input type="hidden" name="rating" id="ratingInput" value="">
                 @error('rating')
-                    <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
+                <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
                 @enderror
             </div>
 
@@ -47,7 +47,7 @@
                     <span id="charCount">0</span> / 500 characters
                 </p>
                 @error('review')
-                    <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
+                <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
                 @enderror
             </div>
             <!-- Upload Photo -->
@@ -61,7 +61,7 @@
                     <span class="text-xs text-gray-400 mt-1 text-center">JPG, PNG, or WEBP, max 2MB each</span>
                 </label>
                 @error('image')
-                    <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
+                <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
                 @enderror
             </div>
             <!-- Buttons -->
@@ -81,51 +81,55 @@
 @endauth
 
 <script>
-(function () {
-    const stars      = document.querySelectorAll('#starRating i');
-    const ratingInput = document.getElementById('ratingInput');
-    const reviewText = document.getElementById('reviewText');
-    const charCount  = document.getElementById('charCount');
-    const fileInput  = document.getElementById('reviewImage');
-    const uploadText = document.getElementById('uploadText');
+    (function() {
+        const stars = document.querySelectorAll('#starRating i');
+        const ratingInput = document.getElementById('ratingInput');
+        const reviewText = document.getElementById('reviewText');
+        const charCount = document.getElementById('charCount');
+        const fileInput = document.getElementById('reviewImage');
+        const uploadText = document.getElementById('uploadText');
 
-    // Star rating
-    let current = {{ (int) old('rating', 0) }};
+        // Star rating
+        let current = {
+            {
+                (int) old('rating', 0)
+            }
+        };
 
-    function paint(val) {
-        stars.forEach(s => {
-            const v = parseInt(s.dataset.value);
-            s.classList.toggle('fa-solid', v <= val);
-            s.classList.toggle('fa-regular', v > val);
-            s.classList.toggle('text-yellow-400', v <= val);
+        function paint(val) {
+            stars.forEach(s => {
+                const v = parseInt(s.dataset.value);
+                s.classList.toggle('fa-solid', v <= val);
+                s.classList.toggle('fa-regular', v > val);
+                s.classList.toggle('text-yellow-400', v <= val);
+            });
+        }
+
+        stars.forEach(star => {
+            star.addEventListener('mouseenter', () => paint(parseInt(star.dataset.value)));
+            star.addEventListener('mouseleave', () => paint(current));
+            star.addEventListener('click', () => {
+                current = parseInt(star.dataset.value);
+                ratingInput.value = current;
+                paint(current);
+            });
         });
-    }
+        paint(current);
 
-    stars.forEach(star => {
-        star.addEventListener('mouseenter', () => paint(parseInt(star.dataset.value)));
-        star.addEventListener('mouseleave', () => paint(current));
-        star.addEventListener('click', () => {
-            current = parseInt(star.dataset.value);
-            ratingInput.value = current;
-            paint(current);
-        });
-    });
-    paint(current);
+        // Character counter
+        if (reviewText) {
+            const sync = () => charCount.textContent = reviewText.value.length;
+            reviewText.addEventListener('input', sync);
+            sync();
+        }
 
-    // Character counter
-    if (reviewText) {
-        const sync = () => charCount.textContent = reviewText.value.length;
-        reviewText.addEventListener('input', sync);
-        sync();
-    }
-
-    // File name feedback
-    if (fileInput) {
-        fileInput.addEventListener('change', () => {
-            uploadText.textContent = fileInput.files.length
-                ? `${fileInput.files.length} image${fileInput.files.length > 1 ? 's' : ''} selected`
-                : 'Click to upload or drag and drop';
-        });
-    }
-})();
+        // File name feedback
+        if (fileInput) {
+            fileInput.addEventListener('change', () => {
+                uploadText.textContent = fileInput.files.length ?
+                    `${fileInput.files.length} image${fileInput.files.length > 1 ? 's' : ''} selected` :
+                    'Click to upload or drag and drop';
+            });
+        }
+    })();
 </script>

@@ -2,10 +2,10 @@
 
     <!-- Banner -->
     <div class="hidden md:block w-full overflow-hidden">
-        <img src="{{ asset('assets/images/aboutus/a2.png') }}" alt="Desktop Banner" class="w-full h-auto">
+        <img src="{{ asset('assets/images/aboutbottombanner.png') }}" alt="Desktop Banner" class="w-full h-auto">
     </div>
     <div class="block md:hidden w-full overflow-hidden">
-        <img src="{{ asset('assets/images/aboutus/aboutbannermobile.png') }}" alt="Mobile Banner" class="w-full h-auto">
+        <img src="{{ asset('assets/images/aboutbottombanner.png') }}" alt="Mobile Banner" class="w-full h-auto">
     </div>
 
     <!-- Content -->

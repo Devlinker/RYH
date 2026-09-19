@@ -39,22 +39,22 @@
 <script src="https://sdk.cashfree.com/js/v3/cashfree.js"></script>
 
 <script>
-    const API_CART_DETAIL  = "{{ route('cart_details') }}";
+    const API_CART_DETAIL = "{{ route('cart_details') }}";
     const API_ORDER_CREATE = "{{ route('order.create') }}";
 
     const CASHFREE_MODE = "{{ env('CASHFREE_ENV') === 'sandbox' ? 'sandbox' : 'production' }}";
 
-    const _params     = new URLSearchParams(window.location.search);
+    const _params = new URLSearchParams(window.location.search);
     const _checkoutId = _params.get('checkout_id');
-    const _isBuyNow   = _params.get('is_buy_now') ? true : false;
-    const _addressId  = _params.get('address_id');
+    const _isBuyNow = _params.get('is_buy_now') ? true : false;
+    const _addressId = _params.get('address_id');
 
     let grandTotal = 0;
 
     function csrf() {
         return document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
     }
-    
+
     function setPayHint(msg) {
         const el = document.getElementById('payHint');
         el.textContent = msg || '';
@@ -70,8 +70,15 @@
         try {
             const res = await fetch(API_CART_DETAIL, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-CSRF-TOKEN': csrf() },
-                body: JSON.stringify({ is_buy_now: _isBuyNow, checkout_id: _checkoutId })
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': csrf()
+                },
+                body: JSON.stringify({
+                    is_buy_now: _isBuyNow,
+                    checkout_id: _checkoutId
+                })
             });
             const data = await res.json();
 
@@ -92,7 +99,10 @@
 
     function renderAddress(addr) {
         const box = document.getElementById('paymentAddress');
-        if (!addr) { box.innerHTML = `<p class="text-sm text-red-500">Address not found.</p>`; return; }
+        if (!addr) {
+            box.innerHTML = `<p class="text-sm text-red-500">Address not found.</p>`;
+            return;
+        }
         box.innerHTML = `
             <h3 class="font-medium">${addr.name ?? ''}
                 <span class="text-[10px] uppercase tracking-wide px-2 py-0.5 rounded-full bg-gray-100 text-gray-600 ml-2">${addr.address_type ?? ''}</span>
@@ -116,9 +126,15 @@
     }
 
     /* ---------- PAY (create order, then full-page redirect) ---------- */
-    document.getElementById('payBtn').addEventListener('click', async function () {
-        if (!_addressId) { setPayHint('No address selected.'); return; }
-        if (grandTotal <= 0) { setPayHint('Invalid order total.'); return; }
+    document.getElementById('payBtn').addEventListener('click', async function() {
+        if (!_addressId) {
+            setPayHint('No address selected.');
+            return;
+        }
+        if (grandTotal <= 0) {
+            setPayHint('Invalid order total.');
+            return;
+        }
 
         const btn = this;
         btn.disabled = true;
@@ -128,7 +144,11 @@
         try {
             const createRes = await fetch(API_ORDER_CREATE, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', 'X-CSRF-TOKEN': csrf() },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': csrf()
+                },
                 body: JSON.stringify({
                     grant_total: grandTotal,
                     address_id: _addressId,
@@ -140,20 +160,24 @@
 
             if (createData.status !== 200 || !createData.payment_session_id) {
                 setPayHint(createData.message || 'Could not start payment.');
-                btn.disabled = false; btn.textContent = 'Pay Now';
+                btn.disabled = false;
+                btn.textContent = 'Pay Now';
                 return;
             }
 
             // full-page redirect to Cashfree, then back to our return page
-            const cashfree = Cashfree({ mode: CASHFREE_MODE });
+            const cashfree = Cashfree({
+                mode: CASHFREE_MODE
+            });
             await cashfree.checkout({
                 paymentSessionId: createData.payment_session_id,
-                redirectTarget: '_self'   // full-page redirect
+                redirectTarget: '_self' // full-page redirect
             });
             // browser navigates away here; nothing after this runs
         } catch (e) {
             setPayHint('Payment failed: ' + e.message);
-            btn.disabled = false; btn.textContent = 'Pay Now';
+            btn.disabled = false;
+            btn.textContent = 'Pay Now';
         }
     });
 

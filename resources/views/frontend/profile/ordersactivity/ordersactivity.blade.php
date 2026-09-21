@@ -8,7 +8,7 @@
         </div>
         <!-- Main Content -->
         <div class="w-full md:w-3/4 min-w-0">
-            <h4 class="text-lg pl-4 font-semibold text-gray-800">Orders</h4>
+            <h4 class="text-xl pl-2 font-bold text-slate-900 mb-4 tracking-tight">Orders</h4>
             @include('frontend.components.orderscard')
         </div>
     </div>

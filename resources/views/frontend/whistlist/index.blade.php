@@ -4,7 +4,7 @@
 
 <div class="max-w-7xl mx-auto px-4 py-10">
 
-    <h4 class="text-xl font-semibold mb-6">Wishlist</h4>
+    <h4 class="text-xl sm:text-2xl font-extrabold text-slate-900 mb-6 tracking-tight">Wishlist</h4>
 
     @if($products->count() > 0)
 
@@ -21,17 +21,17 @@
     @else
 
         <!-- EMPTY WISHLIST -->
-        <div class="flex items-center justify-center px-4 py-16">
-            <div class="max-w-4xl w-full rounded-2xl p-8 md:flex md:items-center md:justify-between">
-                <div class="flex justify-center mb-6 md:mb-0 w-full md:w-[60%]">
-                    <img src="{{ asset('assets/images/whistlist.svg') }}" alt="No wishlist" class="w-full max-w-sm">
+        <div class="flex items-center justify-center px-4 py-12">
+            <div class="max-w-4xl w-full bg-white rounded-3xl p-8 sm:p-12 border border-slate-200/80 shadow-xs md:flex md:items-center md:justify-between gap-8">
+                <div class="flex justify-center mb-6 md:mb-0 w-full md:w-[50%]">
+                    <img src="{{ asset('assets/images/whistlist.svg') }}" alt="No wishlist" class="w-full max-w-xs">
                 </div>
-                <div class="text-center md:text-left w-full md:w-[40%]">
-                    <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mb-3">No wishlist</h2>
-                    <p class="text-gray-500 mb-1">Your favorites live here.</p>
-                    <p class="text-gray-500 mb-6">Like and collect the items you love.</p>
+                <div class="text-center md:text-left w-full md:w-[50%]">
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-slate-900 mb-3 tracking-tight">No items in wishlist</h2>
+                    <p class="text-slate-500 text-sm mb-1">Your favorites live here.</p>
+                    <p class="text-slate-500 text-sm mb-6">Like and collect the items you love while shopping.</p>
                     <a href="{{ url('/shop') }}"
-                        class="inline-block bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition">
+                        class="inline-block bg-[#0f172a] hover:bg-amber-500 hover:text-slate-950 text-white px-8 py-3.5 rounded-xl font-semibold text-sm transition-all duration-200 shadow-md cursor-pointer">
                         Start Shopping
                     </a>
                 </div>

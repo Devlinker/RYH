@@ -104,28 +104,30 @@
     </div>
     <!-- RIGHT -->
     <div class="p-2 md:p-4 rounded-2xl space-y-4">
-        <div class="border rounded-xl p-4 bg-white">
-            <h3 class="font-medium mb-3">Apply Coupon</h3>
-            <div class="flex flex-col sm:flex-row items-center gap-3">
+        <div class="border border-slate-200 rounded-2xl p-5 bg-white shadow-xs">
+            <h3 class="font-bold text-slate-900 text-sm mb-3 flex items-center gap-1.5">
+                <span class="text-amber-500 font-extrabold">//</span> Apply Coupon
+            </h3>
+            <div class="flex flex-col sm:flex-row items-center gap-2.5">
                 <input id="couponCode" type="text" placeholder="Enter coupon code"
-                    class="w-full border rounded-full px-4 py-2 text-sm outline-none">
-                <button id="applyCouponBtn" class="bg-black text-white px-5 py-2 rounded-full text-sm w-full sm:w-auto">
+                    class="w-full border border-slate-300 rounded-full px-4 py-2.5 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition">
+                <button id="applyCouponBtn" class="bg-[#0f172a] text-white px-6 py-2.5 rounded-full text-sm font-bold w-full sm:w-auto hover:bg-amber-500 hover:text-black transition-all shadow-xs">
                     Apply
                 </button>
             </div>
             <p id="couponMsg" class="text-xs mt-2 hidden"></p>
-            <button id="viewCouponsBtn" type="button" class="mt-3 text-sm text-blue-600 hover:underline">
+            <button id="viewCouponsBtn" type="button" class="mt-3 text-xs font-bold text-amber-600 hover:text-amber-700 hover:underline">
                 View available coupons
             </button>
         </div>
-        <div class="bg-white border rounded-xl p-6 shadow-sm h-fit">
+        <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm h-fit">
 
-            <h2 class="font-semibold mb-4">Order Summary</h2>
-            <div id="orderSummary" class="space-y-3 text-sm text-gray-600">
+            <h2 class="font-bold text-slate-900 mb-4">Order Summary</h2>
+            <div id="orderSummary" class="space-y-3 text-sm text-slate-600">
                 <p>Loading...</p>
             </div>
             <button id="continueBtn" type="button" disabled
-                class="w-full mt-6 bg-black text-white py-3 rounded-full disabled:opacity-50 disabled:cursor-not-allowed">
+                class="w-full mt-6 bg-[#0f172a] text-white py-3.5 rounded-full font-bold hover:bg-amber-500 hover:text-black transition-all duration-200 shadow-md disabled:opacity-50 disabled:cursor-not-allowed">
                 Continue
             </button>
             <p id="continueHint" class="text-xs text-red-500 mt-2 hidden">Please select a delivery address.</p>

@@ -51,8 +51,7 @@
 
         {{-- ── Slider Track ── --}}
         <div id="gu-track"
-            class="flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2"
-            style="-ms-overflow-style:none;scrollbar-width:none;">
+            class="flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2 no-scrollbar">
 
             @forelse ($products as $product)
             @php
@@ -228,48 +227,7 @@
     </div>
 </section>
 
-<style>
-    /* Light section background */
-    .gu-section {
-        background: #ffffff;
-    }
 
-    /* Hide native scrollbar */
-    #gu-track::-webkit-scrollbar {
-        display: none;
-    }
-
-    /* Cart overlay slide-up */
-    .gc-overlay {
-        transform: translateY(110%);
-        transition: transform 0.30s cubic-bezier(0.34, 1.3, 0.64, 1);
-    }
-
-    .group:hover .gc-overlay {
-        transform: translateY(0);
-    }
-
-    /* Card entrance animation */
-    @keyframes guFadeUp {
-        from {
-            opacity: 0;
-            transform: translateY(24px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    [data-card] {
-        opacity: 0;
-    }
-
-    [data-card].gu-in {
-        animation: guFadeUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    }
-</style>
 
 <script>
     (function() {
@@ -420,7 +378,7 @@
         if (!pill || pill.dataset.adding) return;
         pill.dataset.adding = '1';
         const orig = pill.innerHTML;
-        pill.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:14px;height:14px;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Added!`;
+        pill.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="w-3.5 h-3.5 flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg> Added!`;
         pill.style.background = '#16a34a';
         pill.style.color = '#fff';
         setTimeout(() => {

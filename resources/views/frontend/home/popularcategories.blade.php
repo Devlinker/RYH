@@ -1,5 +1,5 @@
 <section class="bg-white py-12">
-    <div style="max-width:1220px" class="mx-auto px-4 sm:px-6">
+    <div class="max-w-[1220px] mx-auto px-4 sm:px-6">
 
         {{-- ── Header Row (Title left, Buttons top-right) ── --}}
         <div class="flex items-center justify-between gap-4 mb-8">
@@ -42,7 +42,7 @@
 
         {{-- ── 7-Item Circular Carousel Track ── --}}
         <div class="overflow-hidden w-full py-4 -my-4 select-none">
-            <div id="pc-track" class="flex items-center pc-track-wrap" style="gap: 16px;">
+            <div id="pc-track" class="flex items-center pc-track-wrap gap-4">
 
                 @foreach ($categories as $category)
                 <a href="{{ route('shop') }}"
@@ -79,41 +79,7 @@
     </div>
 </section>
 
-<style>
-    .pc-track-wrap {
-        will-change: transform;
-        cursor: grab;
-    }
 
-    .pc-track-wrap.grabbing {
-        cursor: grabbing;
-    }
-
-    /* Default on Desktop (1024px+): Exactly 7 items visible */
-    .pc-item {
-        flex: 0 0 calc((100% - (6 * 16px)) / 7);
-        width: calc((100% - (6 * 16px)) / 7);
-        min-width: calc((100% - (6 * 16px)) / 7);
-    }
-
-    /* Tablet (641px - 1023px): 5 items visible */
-    @media (max-width: 1023px) {
-        .pc-item {
-            flex: 0 0 calc((100% - (4 * 16px)) / 5);
-            width: calc((100% - (4 * 16px)) / 5);
-            min-width: calc((100% - (4 * 16px)) / 5);
-        }
-    }
-
-    /* Mobile (<= 640px): 3 items visible */
-    @media (max-width: 640px) {
-        .pc-item {
-            flex: 0 0 calc((100% - (2 * 12px)) / 3);
-            width: calc((100% - (2 * 12px)) / 3);
-            min-width: calc((100% - (2 * 12px)) / 3);
-        }
-    }
-</style>
 
 <script>
     (function() {

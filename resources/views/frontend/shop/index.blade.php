@@ -32,7 +32,7 @@
                 </h3>
 
                 <!-- Search Box -->
-                <div class="flex items-center bg-slate-50 border border-slate-200 rounded-full pl-4 pr-1.5 py-1 shadow-sm w-full sm:w-80 md:w-96 focus-within:border-slate-900 focus-within:bg-white focus-within:ring-2 focus-within:ring-slate-900/5 transition-all">
+                <div class="flex items-center bg-slate-50 border border-slate-200 rounded-full pl-4 pr-1.5 py-1 shadow-sm w-full sm:w-80 md:w-96 focus-within:border-amber-500 focus-within:bg-white focus-within:ring-2 focus-within:ring-amber-500/20 transition-all">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-400 mr-2.5 flex-shrink-0" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

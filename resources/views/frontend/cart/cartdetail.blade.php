@@ -26,12 +26,12 @@
             <h4 class="text-lg font-medium block md:hidden mb-3">Cart</h4>
             <div class="h-auto md:h-[70vh] overflow-y-auto">
                 <div
-                    class="hidden md:grid grid-cols-5 text-gray-500 text-sm font-medium bg-gray-100 p-3 rounded-lg mb-4">
-                    <div class="text-center">Product</div>
+                    class="hidden md:grid grid-cols-5 text-slate-600 text-xs font-bold uppercase tracking-wider bg-slate-100 p-3 rounded-xl mb-4">
+                    <div class="text-left pl-3">Product</div>
                     <div class="text-center">Qty Range</div>
                     <div class="text-center">Per Piece</div>
                     <div class="text-center">Quantity</div>
-                    <div class="text-right">Total</div>
+                    <div class="text-right pr-3">Total</div>
                 </div>
 
                 <div id="cartItems"></div>
@@ -44,32 +44,34 @@
             </div>
         </div>
         <div class="p-2 md:p-4 rounded-2xl space-y-4">
-            <div class="border rounded-xl p-4 bg-white">
-                <h3 class="font-medium mb-3">Apply Coupon</h3>
-                <div class="flex flex-col sm:flex-row items-center gap-3">
+            <div class="border border-slate-200 rounded-2xl p-5 bg-white shadow-xs">
+                <h3 class="font-bold text-slate-900 text-sm mb-3 flex items-center gap-1.5">
+                    <span class="text-amber-500 font-extrabold">//</span> Apply Coupon
+                </h3>
+                <div class="flex flex-col sm:flex-row items-center gap-2.5">
                     <input id="couponCode" type="text" placeholder="Enter coupon code"
-                        class="w-full border rounded-full px-4 py-2 text-sm outline-none">
+                        class="w-full border border-slate-300 rounded-full px-4 py-2.5 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition">
                     <button id="applyCouponBtn"
-                        class="bg-black text-white px-5 py-2 rounded-full text-sm w-full sm:w-auto">
+                        class="bg-[#0f172a] text-white px-6 py-2.5 rounded-full text-sm font-bold w-full sm:w-auto hover:bg-amber-500 hover:text-black transition-all shadow-xs">
                         Apply
                     </button>
                 </div>
                 <p id="couponMsg" class="text-xs mt-2 hidden"></p>
-                <button id="viewCouponsBtn" type="button" class="mt-3 text-sm text-blue-600 hover:underline">
+                <button id="viewCouponsBtn" type="button" class="mt-3 text-xs font-bold text-amber-600 hover:text-amber-700 hover:underline">
                     View available coupons
                 </button>
             </div>
 
             <!-- ORDER SUMMARY -->
-            <div class="bg-white border rounded-xl p-6 shadow-sm">
-                <h2 class="font-semibold mb-4">Order Summary</h2>
-                <div id="cartSummary" class="space-y-3 text-sm text-gray-600">
+            <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h2 class="font-bold text-slate-900 mb-4">Order Summary</h2>
+                <div id="cartSummary" class="space-y-3 text-sm text-slate-600">
                     <p>Loading...</p>
                 </div>
-                <div class="border-t my-4"></div>
+                <div class="border-t border-slate-100 my-4"></div>
 
                 <button id="checkoutBtn" type="button"
-                    class="w-full mt-6 bg-black text-white py-3 rounded-full block text-center hover:bg-gray-800 transition disabled:opacity-50">
+                    class="w-full mt-6 bg-[#0f172a] text-white py-3.5 rounded-full block text-center font-bold hover:bg-amber-500 hover:text-black transition-all duration-200 shadow-md disabled:opacity-50">
                     Proceed to Checkout
                 </button>
             </div>

@@ -54,7 +54,7 @@
 
                     @forelse ($pairedSlides as $index => $slideProducts)
                     {{-- Clean stacking: pins nicely beneath the navbar on both mobile & desktop --}}
-                    <div class="dc-stack-layer sticky"
+                    <div class="dc-stack-layer sticky top-[68px] sm:top-[96px] mb-5 sm:mb-[30px]"
                         style="z-index: {{ 10 + $index }};"
                         data-stack-index="{{ $index }}">
 
@@ -237,19 +237,7 @@
     </div>
 </section>
 
-<style>
-    .dc-stack-layer {
-        top: 68px;
-        margin-bottom: 20px;
-    }
 
-    @media (min-width: 641px) {
-        .dc-stack-layer {
-            top: 96px;
-            margin-bottom: 30px;
-        }
-    }
-</style>
 
 <script>
     /* ── Quick Add to Cart Feedback ── */

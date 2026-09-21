@@ -432,3 +432,5 @@ const AddressManager = (function () {
         getSelectedId: () => selectedAddressId,
     };
 })();
+
+window.AddressManager = AddressManager;

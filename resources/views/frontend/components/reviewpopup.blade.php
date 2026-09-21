@@ -21,9 +21,9 @@
                     Your Rating <span class="text-red-500">*</span>
                 </label>
 
-                <div id="starRating" class="flex gap-2 text-xl sm:text-2xl text-gray-300">
+                <div id="starRating" class="flex gap-2 text-xl sm:text-2xl text-slate-300">
                     @for ($i = 1; $i <= 5; $i++)
-                        <i class="fa-regular fa-star cursor-pointer hover:text-yellow-400"
+                        <i class="fa-regular fa-star cursor-pointer hover:text-amber-400 transition-colors"
                         data-value="{{ $i }}"></i>
                         @endfor
                 </div>
@@ -41,9 +41,9 @@
 
                 <textarea name="review" id="reviewText"
                     placeholder="Tell us about your experience with this product..." maxlength="500"
-                    class="w-full border rounded-xl p-3 text-sm h-24 resize-none focus:outline-none focus:ring-2 focus:ring-black">{{ old('review') }}</textarea>
+                    class="w-full border border-slate-300 rounded-xl p-3 text-sm h-24 resize-none focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition">{{ old('review') }}</textarea>
 
-                <p class="text-xs text-gray-400 mt-1">
+                <p class="text-xs text-slate-400 mt-1">
                     <span id="charCount">0</span> / 500 characters
                 </p>
                 @error('review')
@@ -54,11 +54,11 @@
             <div>
                 <label class="block text-sm font-medium mb-2">Add Photo (Optional)</label>
 
-                <label class="border-2 border-dashed rounded-xl p-6 sm:p-8 flex flex-col items-center justify-center text-gray-400 cursor-pointer hover:bg-gray-50">
+                <label class="border-2 border-dashed border-slate-300 rounded-xl p-6 sm:p-8 flex flex-col items-center justify-center text-slate-400 cursor-pointer hover:border-amber-400 hover:bg-amber-50/20 transition">
                     <input type="file" name="image[]" id="reviewImage" accept="image/jpeg,image/png,image/webp" class="hidden" multiple>
-                    <i class="fa-solid fa-arrow-up-from-bracket text-xl sm:text-2xl mb-2"></i>
-                    <p class="text-sm text-center" id="uploadText">Click to upload or drag and drop</p>
-                    <span class="text-xs text-gray-400 mt-1 text-center">JPG, PNG, or WEBP, max 2MB each</span>
+                    <i class="fa-solid fa-arrow-up-from-bracket text-xl sm:text-2xl mb-2 text-slate-400"></i>
+                    <p class="text-sm text-center text-slate-600 font-medium" id="uploadText">Click to upload or drag and drop</p>
+                    <span class="text-xs text-slate-400 mt-1 text-center">JPG, PNG, or WEBP, max 2MB each</span>
                 </label>
                 @error('image')
                 <p class="text-xs text-red-500 mt-1">{{ $message }}</p>
@@ -67,11 +67,11 @@
             <!-- Buttons -->
             <div class="flex flex-col sm:flex-row gap-3 pt-2">
                 <button type="button" onclick="document.getElementById('reviewModal').close()"
-                    class="w-full sm:w-1/2 border rounded-full py-3 font-medium hover:bg-gray-100">
+                    class="w-full sm:w-1/2 border border-slate-300 rounded-full py-3 font-semibold text-slate-700 hover:bg-slate-100 transition">
                     Cancel
                 </button>
                 <button type="submit"
-                    class="w-full sm:w-1/2 bg-black text-white rounded-full py-3 font-medium hover:bg-gray-900">
+                    class="w-full sm:w-1/2 bg-[#0f172a] text-white rounded-full py-3 font-semibold hover:bg-amber-500 hover:text-black transition-all duration-200 shadow-md">
                     Submit Review
                 </button>
             </div>
@@ -90,18 +90,14 @@
         const uploadText = document.getElementById('uploadText');
 
         // Star rating
-        let current = {
-            {
-                (int) old('rating', 0)
-            }
-        };
+        let current = {{ (int) old('rating', 0) }};
 
         function paint(val) {
             stars.forEach(s => {
                 const v = parseInt(s.dataset.value);
                 s.classList.toggle('fa-solid', v <= val);
                 s.classList.toggle('fa-regular', v > val);
-                s.classList.toggle('text-yellow-400', v <= val);
+                s.classList.toggle('text-amber-400', v <= val);
             });
         }
 

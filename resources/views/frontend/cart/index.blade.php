@@ -11,61 +11,61 @@
         </a>
         <!-- Step 1 -->
         <a href="{{ route('shop.cart') }}" class="flex items-center">
-            <div class="w-10 h-10 flex items-center justify-center rounded-full border-2
-                {{ $step >= 1 ? 'border-black' : 'border-gray-300' }}">
-                <i class="fa-solid fa-cart-shopping
-                    {{ $step >= 1 ? 'text-black' : 'text-gray-400' }}"></i>
+            <div class="w-10 h-10 flex items-center justify-center rounded-full border-2 transition-all
+                {{ $step >= 1 ? 'border-amber-500 bg-amber-50/50 text-amber-600 shadow-sm' : 'border-slate-200 text-slate-400' }}">
+                <i class="fa-solid fa-cart-shopping text-sm
+                    {{ $step >= 1 ? 'text-amber-600' : 'text-slate-400' }}"></i>
             </div>
-            <span class="ml-2
-                {{ $step >= 1 ? 'text-black font-medium' : 'text-gray-400' }}">
+            <span class="ml-2.5 text-sm
+                {{ $step >= 1 ? 'text-slate-900 font-bold' : 'text-slate-400' }}">
                 Cart
             </span>
         </a>
         <!-- Line 1 -->
-        <div class="flex-1 h-[2px] mx-2
-            {{ $step >= 2 ? 'bg-black' : 'bg-gray-300' }}">
+        <div class="flex-1 h-[2px] mx-3 rounded-full transition-all
+            {{ $step >= 2 ? 'bg-amber-500' : 'bg-slate-200' }}">
         </div>
         <!-- Step 2 -->
         <a class="flex items-center">
-            <div class="w-10 h-10 flex items-center justify-center rounded-full border-2
-                {{ $step >= 2 ? 'border-black' : 'border-gray-300' }}">
-                <i class="fa-solid fa-location-dot
-                    {{ $step >= 2 ? 'text-black' : 'text-gray-400' }}"></i>
+            <div class="w-10 h-10 flex items-center justify-center rounded-full border-2 transition-all
+                {{ $step >= 2 ? 'border-amber-500 bg-amber-50/50 text-amber-600 shadow-sm' : 'border-slate-200 text-slate-400' }}">
+                <i class="fa-solid fa-location-dot text-sm
+                    {{ $step >= 2 ? 'text-amber-600' : 'text-slate-400' }}"></i>
             </div>
-            <span class="ml-2
-                {{ $step >= 2 ? 'text-black font-medium' : 'text-gray-400' }}">
+            <span class="ml-2.5 text-sm
+                {{ $step >= 2 ? 'text-slate-900 font-bold' : 'text-slate-400' }}">
                 Delivery Info
             </span>
         </a>
         <!-- Line 2 -->
-        <div class="flex-1 h-[2px] mx-2
-            {{ $step >= 3 ? 'bg-black' : 'bg-gray-300' }}">
+        <div class="flex-1 h-[2px] mx-3 rounded-full transition-all
+            {{ $step >= 3 ? 'bg-amber-500' : 'bg-slate-200' }}">
         </div>
         <!-- Step 3 -->
         <div class="flex items-center">
-            <div class="w-10 h-10 flex items-center justify-center rounded-full border-2
-                {{ $step >= 3 ? 'border-black' : 'border-gray-300' }}">
-                <i class="fa-solid fa-credit-card
-                    {{ $step >= 3 ? 'text-black' : 'text-gray-400' }}"></i>
+            <div class="w-10 h-10 flex items-center justify-center rounded-full border-2 transition-all
+                {{ $step >= 3 ? 'border-amber-500 bg-amber-50/50 text-amber-600 shadow-sm' : 'border-slate-200 text-slate-400' }}">
+                <i class="fa-solid fa-credit-card text-sm
+                    {{ $step >= 3 ? 'text-amber-600' : 'text-slate-400' }}"></i>
             </div>
-            <span class="ml-2
-                {{ $step >= 3 ? 'text-black font-medium' : 'text-gray-400' }}">
+            <span class="ml-2.5 text-sm
+                {{ $step >= 3 ? 'text-slate-900 font-bold' : 'text-slate-400' }}">
                 Payment
             </span>
         </div>
         <!-- Line 3 -->
-        <div class="flex-1 h-[2px] mx-2
-            {{ $step >= 4 ? 'bg-black' : 'bg-gray-300' }}">
+        <div class="flex-1 h-[2px] mx-3 rounded-full transition-all
+            {{ $step >= 4 ? 'bg-amber-500' : 'bg-slate-200' }}">
         </div>
         <!-- Step 4 -->
         <div class="flex items-center">
-            <div class="w-10 h-10 flex items-center justify-center rounded-full border-2
-                {{ $step >= 4 ? 'border-black' : 'border-gray-300' }}">
-                <i class="fa-solid fa-check
-                    {{ $step >= 4 ? 'text-black' : 'text-gray-400' }}"></i>
+            <div class="w-10 h-10 flex items-center justify-center rounded-full border-2 transition-all
+                {{ $step >= 4 ? 'border-amber-500 bg-amber-50/50 text-amber-600 shadow-sm' : 'border-slate-200 text-slate-400' }}">
+                <i class="fa-solid fa-check text-sm
+                    {{ $step >= 4 ? 'text-amber-600' : 'text-slate-400' }}"></i>
             </div>
-            <span class="ml-2
-                {{ $step >= 4 ? 'text-black font-medium' : 'text-gray-400' }}">
+            <span class="ml-2.5 text-sm
+                {{ $step >= 4 ? 'text-slate-900 font-bold' : 'text-slate-400' }}">
                 Success
             </span>
         </div>

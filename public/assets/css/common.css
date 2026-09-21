@@ -1,56 +1,68 @@
+/* ==========================================================================
+   CHUMPAY COMMON & GLOBAL STYLESHEET
+   Brand Theme: Amber Gold (#F59E0B) & Sleek Slate (#0F172A)
+   Typography: Poppins
+   ========================================================================== */
+
 /* 1. Google Font Import - Poppins */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
 :root {
-    --color-primary: #000000; /* Jet Black */
-    --color-primary-hover: #1a1a1a;
+    /* Brand Theme Colors */
+    --primary-color: #f59e0b;      /* Primary Theme Accent */
+    --primary-hover: #d97706;      /* Amber-600 */
+    --secondary-color: #0f172a;    /* Deep Charcoal Slate-900 */
+    --secondary-hover: #1e293b;    /* Slate-800 */
 
-    --color-accent: #f59e0b; /* Brand Amber Gold */
+    --color-primary: #0f172a;
+    --color-primary-hover: #1e293b;
+
+    --color-accent: #f59e0b;       /* Brand Amber Gold */
     --color-accent-hover: #d97706; /* Amber-600 */
     --color-accent-light: #fef3c7; /* Soft Amber Tint */
-    --color-accent-glow: rgba(245, 158, 11, 0.2);
+    --color-accent-glow: rgba(245, 158, 11, 0.25);
 
-    /* Text */
-    --color-text-primary: #0f172a; /* Slate-900 / Near Black */
-    --color-text-secondary: #475569; /* Slate-600 */
-    --color-text-muted: #94a3b8; /* Slate-400 */
+    /* Text Colors */
+    --text-color: #334155;         /* Slate-700 */
+    --heading-color: #0f172a;      /* Slate-900 */
+    --color-text-primary: #0f172a;
+    --color-text-secondary: #475569;
+    --color-text-muted: #94a3b8;
     --color-text-white: #ffffff;
 
     /* Backgrounds */
+    --background-color: #ffffff;
+    --light-background: #f8fafc;
     --color-bg-body: #ffffff;
-    --color-bg-surface: #f8fafc; /* Light section bg */
+    --color-bg-surface: #f8fafc;
     --color-bg-card: #ffffff;
 
     /* Borders */
-    --color-border-card: #e2e8f0; /* Subtle card border */
+    --border-color: #e2e8f0;
+    --color-border-card: #e2e8f0;
     --color-border-light: #f1f5f9;
-    --color-border-dark: #000000;
+    --color-border-dark: #0f172a;
     --color-border-accent: #f59e0b;
 
-    /* Misc */
-    --color-rating-star: #f59e0b; /* Gold star */
-    --color-success: #16a34a; /* Green */
-    --color-info: #2563eb; /* Blue */
+    /* Status Colors */
+    --color-rating-star: #f59e0b;
+    --color-success: #16a34a;
+    --color-info: #2563eb;
+    --color-error: #ef4444;
 
-    /* ----------------------------------------------------------------------
-       TYPOGRAPHY TOKENS (Change here to change the entire application's font)
-       ---------------------------------------------------------------------- */
-    --font-family:
-        "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        "Helvetica Neue", Arial, sans-serif;
-    --font-family-heading:
-        "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        sans-serif;
+    /* Typography Tokens */
+    --font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-family-heading: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-    --font-size-2xs: 0.625rem; /* 10px */
-    --font-size-xs: 0.75rem; /* 12px */
-    --font-size-sm: 0.875rem; /* 14px */
-    --font-size-base: 1rem; /* 16px */
-    --font-size-md: 1.125rem; /* 18px */
-    --font-size-lg: 1.25rem; /* 20px */
-    --font-size-xl: 1.5rem; /* 24px */
-    --font-size-2xl: 1.75rem; /* 28px */
-    --font-size-3xl: 2.25rem; /* 36px */
+    --font-size-2xs: 0.625rem;  /* 10px */
+    --font-size-xs: 0.75rem;    /* 12px */
+    --font-size-sm: 0.875rem;   /* 14px */
+    --font-size-base: 1rem;     /* 16px */
+    --font-size-md: 1.125rem;   /* 18px */
+    --font-size-lg: 1.25rem;    /* 20px */
+    --font-size-xl: 1.5rem;     /* 24px */
+    --font-size-2xl: 1.75rem;   /* 28px */
+    --font-size-3xl: 2.25rem;   /* 36px */
 
     --font-weight-light: 300;
     --font-weight-normal: 400;
@@ -63,10 +75,9 @@
     --line-height-tight: 1.2;
     --line-height-snug: 1.35;
     --line-height-normal: 1.5;
+    --line-height-relaxed: 1.65;
 
-    /* ----------------------------------------------------------------------
-       BORDER RADIUS & ELEVATION
-       ---------------------------------------------------------------------- */
+    /* Radius Tokens */
     --radius-xs: 4px;
     --radius-sm: 6px;
     --radius-md: 10px;
@@ -75,19 +86,20 @@
     --radius-2xl: 26px;
     --radius-full: 9999px;
 
-    --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.05);
-    --shadow-card: 0 2px 10px rgba(0, 0, 0, 0.05);
-    --shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.09);
+    /* Elevation & Shadows */
+    --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+    --shadow-card: 0 4px 16px rgba(15, 23, 42, 0.04);
+    --shadow-hover: 0 16px 36px rgba(15, 23, 42, 0.08);
+    --shadow-amber: 0 8px 24px rgba(245, 158, 11, 0.22);
 
-    --transition-fast: all 0.15s ease;
-    --transition: all 0.25s ease-in-out;
-    --transition-slow: all 0.4s ease;
+    /* Transitions */
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* --------------------------------------------------------------------------
-   GLOBAL RESET & STRICT FONT INHERITANCE
-   Forces Poppins (or whatever is in --font-family) on ALL elements,
-   including Tailwind's .font-sans and .font-heading utility classes!
+   GLOBAL RESET & FONT INHERITANCE
    -------------------------------------------------------------------------- */
 *,
 *::before,
@@ -124,6 +136,7 @@ body {
     background-color: var(--color-bg-body);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
 }
 
 h1,
@@ -135,159 +148,178 @@ h6 {
     font-family: var(--font-family-heading) !important;
     font-weight: var(--font-weight-bold);
     letter-spacing: -0.015em;
+    color: var(--heading-color);
 }
 
 /* --------------------------------------------------------------------------
-   TAILWIND SYNC / THEME COLOR UTILITIES
-   Ensures Amber, Slate, and Black utility classes align with common.css tokens
+   SCROLLBAR UTILITIES
    -------------------------------------------------------------------------- */
-.text-amber-500 {
-    color: var(--color-accent) !important;
+.no-scrollbar,
+.hide-scrollbar {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
 }
-.text-amber-600 {
-    color: var(--color-accent-hover) !important;
-}
-.bg-amber-500 {
-    background-color: var(--color-accent) !important;
-}
-.bg-amber-600 {
-    background-color: var(--color-accent-hover) !important;
-}
-.border-amber-400 {
-    border-color: #fbbf24 !important;
-}
-.border-amber-500 {
-    border-color: var(--color-accent) !important;
+
+.no-scrollbar::-webkit-scrollbar,
+.hide-scrollbar::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
 }
 
 /* --------------------------------------------------------------------------
-   TYPOGRAPHY UTILITIES
+   POPULAR CATEGORIES CAROUSEL TRACK (Centralized from Blade)
    -------------------------------------------------------------------------- */
-.text-2xs {
-    font-size: var(--font-size-2xs);
-}
-.text-xs {
-    font-size: var(--font-size-xs);
-}
-.text-sm {
-    font-size: var(--font-size-sm);
-}
-.text-base {
-    font-size: var(--font-size-base);
-}
-.text-md {
-    font-size: var(--font-size-md);
-}
-.text-lg {
-    font-size: var(--font-size-lg);
-}
-.text-xl {
-    font-size: var(--font-size-xl);
-}
-.text-2xl {
-    font-size: var(--font-size-2xl);
-}
-.text-3xl {
-    font-size: var(--font-size-3xl);
+.pc-track-wrap {
+    will-change: transform;
+    cursor: grab;
 }
 
-.fw-light {
-    font-weight: var(--font-weight-light);
-}
-.fw-normal {
-    font-weight: var(--font-weight-normal);
-}
-.fw-medium {
-    font-weight: var(--font-weight-medium);
-}
-.fw-semibold {
-    font-weight: var(--font-weight-semibold);
-}
-.fw-bold {
-    font-weight: var(--font-weight-bold);
-}
-.fw-extrabold {
-    font-weight: var(--font-weight-extrabold);
-}
-.fw-black {
-    font-weight: var(--font-weight-black);
+.pc-track-wrap.grabbing {
+    cursor: grabbing;
 }
 
-.text-primary {
-    color: var(--color-text-primary);
+/* Default Desktop (1024px+): Exactly 7 items */
+.pc-item {
+    flex: 0 0 calc((100% - (6 * 16px)) / 7);
+    width: calc((100% - (6 * 16px)) / 7);
+    min-width: calc((100% - (6 * 16px)) / 7);
 }
-.text-secondary {
-    color: var(--color-text-secondary);
+
+/* Tablet (641px - 1023px): 5 items */
+@media (max-width: 1023px) {
+    .pc-item {
+        flex: 0 0 calc((100% - (4 * 16px)) / 5);
+        width: calc((100% - (4 * 16px)) / 5);
+        min-width: calc((100% - (4 * 16px)) / 5);
+    }
 }
-.text-muted {
-    color: var(--color-text-muted);
-}
-.text-white {
-    color: var(--color-text-white);
-}
-.text-accent {
-    color: var(--color-accent);
-}
-.text-success {
-    color: var(--color-success);
+
+/* Mobile (<= 640px): 3 items */
+@media (max-width: 640px) {
+    .pc-item {
+        flex: 0 0 calc((100% - (2 * 12px)) / 3);
+        width: calc((100% - (2 * 12px)) / 3);
+        min-width: calc((100% - (2 * 12px)) / 3);
+    }
 }
 
 /* --------------------------------------------------------------------------
-   BACKGROUND & BORDER UTILITIES
+   GEAR UP & CARD ANIMATIONS (Centralized from Blade)
    -------------------------------------------------------------------------- */
-.bg-body {
-    background-color: var(--color-bg-body);
-}
-.bg-surface {
-    background-color: var(--color-bg-surface);
-}
-.bg-card {
-    background-color: var(--color-bg-card);
-}
-.bg-accent {
-    background-color: var(--color-accent);
+.gc-overlay {
+    transform: translateY(110%);
+    transition: transform 0.30s cubic-bezier(0.34, 1.3, 0.64, 1);
 }
 
-.border-card {
-    border-color: var(--color-border-card);
-}
-.border-light {
-    border-color: var(--color-border-light);
-}
-.border-dark {
-    border-color: var(--color-border-dark);
-}
-.border-accent {
-    border-color: var(--color-border-accent);
+.group:hover .gc-overlay {
+    transform: translateY(0);
 }
 
-.rounded-xs {
-    border-radius: var(--radius-xs);
+@keyframes guFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
-.rounded-sm {
-    border-radius: var(--radius-sm);
+
+[data-card] {
+    opacity: 0;
 }
-.rounded-md {
-    border-radius: var(--radius-md);
-}
-.rounded-lg {
-    border-radius: var(--radius-lg);
-}
-.rounded-xl {
-    border-radius: var(--radius-xl);
-}
-.rounded-2xl {
-    border-radius: var(--radius-2xl);
-}
-.rounded-full {
-    border-radius: var(--radius-full);
+
+[data-card].gu-in {
+    animation: guFadeUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 /* --------------------------------------------------------------------------
-   THEME FOOTER COMPONENT STYLES
+   RANGE SLIDER STYLES (Centralized from Shop Filter Blade)
+   -------------------------------------------------------------------------- */
+.range-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 20px;
+    background: transparent;
+    pointer-events: none;
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+.range-slider::-webkit-slider-runnable-track {
+    -webkit-appearance: none;
+    background: transparent;
+    height: 20px;
+    border: none;
+}
+
+.range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2.5px solid #f59e0b;
+    box-shadow: 0 1px 4px rgba(15, 23, 42, 0.25), 0 0 0 2px rgba(245, 158, 11, 0.15);
+    cursor: pointer;
+    pointer-events: auto;
+    margin-top: 1px;
+    transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.15s ease;
+}
+
+.range-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.25), 0 0 0 4px rgba(245, 158, 11, 0.25);
+}
+
+.range-slider::-webkit-slider-thumb:active {
+    transform: scale(1.25);
+    cursor: grabbing;
+}
+
+.range-slider::-moz-range-track {
+    background: transparent;
+    height: 20px;
+    border: none;
+}
+
+.range-slider::-moz-range-thumb {
+    appearance: none;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2.5px solid #f59e0b;
+    box-shadow: 0 1px 4px rgba(15, 23, 42, 0.25), 0 0 0 2px rgba(245, 158, 11, 0.15);
+    cursor: pointer;
+    pointer-events: auto;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.range-slider::-moz-range-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.25), 0 0 0 4px rgba(245, 158, 11, 0.25);
+}
+
+.range-slider::-moz-range-thumb:active {
+    transform: scale(1.25);
+    cursor: grabbing;
+}
+
+/* --------------------------------------------------------------------------
+   THEME FOOTER STYLES
    -------------------------------------------------------------------------- */
 .theme-footer {
-    background-color: var(--color-primary);
+    background-color: #0b0f19;
     background-image: radial-gradient(
         ellipse at 50% 0%,
         rgba(245, 158, 11, 0.08) 0%,
@@ -366,17 +398,4 @@ h6 {
     border-color: var(--color-border-accent) !important;
     box-shadow: 0 0 16px var(--color-accent-glow);
     transform: translateY(-2px);
-}
-
-.theme-footer-watermark {
-    font-family: var(--font-family-heading);
-    font-weight: var(--font-weight-extrabold);
-    letter-spacing: -0.02em;
-    background: linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.06) 0%,
-        rgba(245, 158, 11, 0.02) 100%
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }

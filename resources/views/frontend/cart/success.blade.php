@@ -9,16 +9,15 @@
 
         <!-- Right Content -->
         <div class="w-full md:w-1/2 text-center md:text-left">
-            <p class="text-gray-400 text-[12px] sm:text-[13px] mb-2">
+            <p class="text-slate-400 text-xs sm:text-sm font-semibold uppercase tracking-wider mb-2">
                 We’re getting it ready for you!
             </p>
 
-            <h2 class="text-black text-[26px] sm:text-[32px] lg:text-[38px] font-semibold leading-snug mb-5">
+            <h2 class="text-slate-900 text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-snug mb-5">
                 Order placed successfully!
             </h2>
 
-            <a href="/profile/orders" class=" inline-block bg-black text-white text-[13px] sm:text-[14px] font-medium px-8 py-3 rounded-full
-                hover:bg-gray-800 transition">
+            <a href="/profile/orders" class="inline-block bg-[#0f172a] text-white text-xs sm:text-sm font-bold px-8 py-3 rounded-full hover:bg-amber-500 hover:text-black transition-all duration-200 shadow-md">
                 View Orders
             </a>
         </div>

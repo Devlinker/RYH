@@ -3,32 +3,32 @@
     <!-- LEFT -->
     <div class="lg:col-span-2">
         <div class="flex items-center justify-between mb-4">
-            <h2 class="font-semibold">Payment</h2>
-            <a href="javascript:history.back()" class="text-sm text-gray-500 hover:text-black">← Back</a>
+            <h2 class="font-bold text-slate-900 text-lg">Payment</h2>
+            <a href="javascript:history.back()" class="text-sm font-medium text-slate-500 hover:text-slate-900 transition">← Back</a>
         </div>
 
-        <div id="paymentAddress" class="bg-white p-6 rounded-xl border mb-6">
-            <p class="text-sm text-gray-500">Loading address...</p>
+        <div id="paymentAddress" class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs mb-6">
+            <p class="text-sm text-slate-500">Loading address...</p>
         </div>
 
-        <div class="bg-white p-6 rounded-xl border">
-            <h3 class="font-medium mb-4">Payment Method</h3>
-            <label class="flex items-center gap-3 border rounded-xl p-4 cursor-pointer">
-                <input type="radio" name="paymethod" value="cashfree" checked>
-                <span class="text-sm font-medium">Pay Online (Cashfree)</span>
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs">
+            <h3 class="font-bold text-slate-900 mb-4">Payment Method</h3>
+            <label class="flex items-center gap-3 border border-slate-200 rounded-xl p-4 cursor-pointer hover:border-amber-400/80 hover:bg-amber-50/20 transition-all">
+                <input type="radio" name="paymethod" value="cashfree" checked class="accent-amber-500 w-4 h-4 cursor-pointer">
+                <span class="text-sm font-bold text-slate-900">Pay Online (Cashfree)</span>
             </label>
-            <p class="text-xs text-gray-400 mt-3">You'll be redirected to a secure Cashfree checkout.</p>
+            <p class="text-xs text-slate-400 mt-3">You'll be redirected to a secure Cashfree checkout.</p>
         </div>
     </div>
 
     <!-- RIGHT -->
-    <div class="bg-white border rounded-xl p-6 shadow-sm h-fit">
-        <h2 class="font-semibold mb-4">Order Summary</h2>
-        <div id="orderSummary" class="space-y-3 text-sm text-gray-600">
+    <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm h-fit">
+        <h2 class="font-bold text-slate-900 mb-4">Order Summary</h2>
+        <div id="orderSummary" class="space-y-3 text-sm text-slate-600">
             <p>Loading...</p>
         </div>
         <button id="payBtn" type="button" disabled
-            class="w-full mt-6 bg-black text-white py-3 rounded-full disabled:opacity-50 disabled:cursor-not-allowed">
+            class="w-full mt-6 bg-[#0f172a] text-white py-3.5 rounded-full font-bold hover:bg-amber-500 hover:text-black transition-all duration-200 shadow-md disabled:opacity-50 disabled:cursor-not-allowed">
             Pay Now
         </button>
         <p id="payHint" class="text-xs text-red-500 mt-2 hidden"></p>

@@ -85,8 +85,7 @@ $firstTier = $bulkTiers->first();
             <div class="h-[300px] sm:h-[400px] flex justify-center rounded-[42px] overflow-hidden relative"
                 id="imageZoomContainer">
                 <img id="mainImage" src="{{ $mainImg }}" class="w-[85%] h-auto object-contain">
-                <div id="zoomLens" class="hidden absolute border-2 border-blue-400 bg-blue-400/15 pointer-events-none"
-                    style="width:130px;height:130px;"></div>
+                <div id="zoomLens" class="hidden absolute w-[130px] h-[130px] border-2 border-amber-500/60 bg-amber-500/15 rounded-lg pointer-events-none"></div>
             </div>
             <div id="zoomResult"
                 class="hidden absolute top-0 left-full ml-4 w-[420px] h-[420px] border rounded-xl bg-white shadow-lg z-50 bg-no-repeat">
@@ -215,11 +214,11 @@ $firstTier = $bulkTiers->first();
                     </div>
                     <div class="flex gap-3 w-full sm:w-auto">
                         <button type="button" onclick="addtoCart()"
-                            class="flex-1 sm:flex-initial border border-black text-black px-6 sm:px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition inline-block text-center">
+                            class="flex-1 sm:flex-initial border border-slate-300 text-slate-800 px-6 sm:px-8 py-3 rounded-xl font-semibold hover:bg-slate-100 transition inline-block text-center">
                             Add to Cart
                         </button>
                         <button type="button" onclick="buyNowBulk()"
-                            class="flex-1 sm:flex-initial bg-black text-white px-6 sm:px-8 py-3 rounded-xl font-semibold hover:bg-gray-900 transition inline-block text-center">
+                            class="flex-1 sm:flex-initial bg-[#0f172a] text-white px-6 sm:px-8 py-3 rounded-xl font-semibold hover:bg-amber-500 hover:text-black transition-all duration-200 shadow-md inline-block text-center">
                             Buy now
                         </button>
                     </div>
@@ -244,7 +243,7 @@ $firstTier = $bulkTiers->first();
             <div class="flex gap-2 mt-2">
                 @foreach ($sizeList as $size)
                 <button type="button" data-attr-id="{{ $size['attr_value_id'] }}"
-                    class="w-10 h-10 border rounded-full hover:bg-gray-200 text-sm size-btn">
+                    class="w-10 h-10 border border-slate-300 rounded-full hover:border-amber-500 hover:text-amber-600 transition text-sm font-semibold size-btn">
                     {{ $size['value'] }}
                 </button>
                 @endforeach
@@ -275,11 +274,11 @@ $firstTier = $bulkTiers->first();
                     </button>
                 </div>
                 <button type="button" onclick="addToCartSingle()"
-                    class="flex-1 sm:flex-initial flex items-center justify-center gap-2 border border-gray-300 rounded-full px-5 py-2 text-gray-700 hover:bg-gray-100">
+                    class="flex-1 sm:flex-initial flex items-center justify-center gap-2 border border-slate-300 rounded-full px-5 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-100 transition">
                     <i class="fa-solid fa-cart-plus"></i> Add to Cart
                 </button>
                 <button type="button" onclick="buyNow()"
-                    class="flex-1 sm:flex-initial bg-black text-white px-8 py-3 rounded-xl font-semibold hover:bg-gray-900 transition inline-block text-center">
+                    class="flex-1 sm:flex-initial bg-[#0f172a] text-white px-8 py-3 rounded-xl font-semibold hover:bg-amber-500 hover:text-black transition-all duration-200 shadow-md inline-block text-center">
                     Buy now
                 </button>
             </div>
@@ -336,16 +335,8 @@ $firstTier = $bulkTiers->first();
         ) || null;
     }
 
-    const DEFAULT_PRICE = {
-        {
-            (float) $formatted['price']
-        }
-    };
-    const DEFAULT_OLD_PRICE = {
-        {
-            (float) $formatted['oldPrice']
-        }
-    };
+    const DEFAULT_PRICE = {{ (float) $formatted['price'] }};
+    const DEFAULT_OLD_PRICE = {{ (float) $formatted['oldPrice'] }};
 
     // Price genuinely differs by color/size (each variant row has its own
     // regular/sale price) — refresh the displayed price on every pick
@@ -515,7 +506,7 @@ $firstTier = $bulkTiers->first();
     function requireLogin() {
         if (!IS_LOGGED_IN) {
             showToast('Please log in to continue...', 'error');
-            const loginBtn = document.getElementById('LoginBtn');
+            const loginBtn = document.getElementById('LoginBtn') || document.getElementById('mobileLoginBtn');
             if (loginBtn) loginBtn.click();
             return false;
         }
@@ -553,7 +544,7 @@ $firstTier = $bulkTiers->first();
 
             if (res.status === 401 || data.status === 401) {
                 showToast('Session expired. Please login again.', 'error');
-                const loginBtn = document.getElementById('LoginBtn');
+                const loginBtn = document.getElementById('LoginBtn') || document.getElementById('mobileLoginBtn');
                 if (loginBtn) loginBtn.click();
                 return;
             }
@@ -617,7 +608,7 @@ $firstTier = $bulkTiers->first();
 
             if (res.status === 401 || data.status === 401) {
                 showToast('Please log in to continue...', 'error');
-                const loginBtn = document.getElementById('LoginBtn');
+                const loginBtn = document.getElementById('LoginBtn') || document.getElementById('mobileLoginBtn');
                 if (loginBtn) loginBtn.click();
                 return;
             }

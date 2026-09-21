@@ -33,12 +33,12 @@
 
             const toast = document.createElement("div");
             const colors = {
-                info: "bg-gray-800",
-                success: "bg-green-600",
-                error: "bg-red-600",
+                info: "bg-[#0f172a] border border-slate-700 shadow-slate-900/30",
+                success: "bg-emerald-600 border border-emerald-500 shadow-emerald-900/30",
+                error: "bg-rose-600 border border-rose-500 shadow-rose-900/30",
             };
             toast.className =
-                `${colors[type] || colors.info} text-white px-5 py-3 rounded-lg shadow-lg text-sm transition transform translate-x-4 opacity-0`;
+                `${colors[type] || colors.info} text-white px-5 py-3.5 rounded-xl shadow-xl text-xs sm:text-sm font-medium transition-all duration-300 transform translate-x-4 opacity-0 border`;
             toast.innerText = message;
             container.appendChild(toast);
 

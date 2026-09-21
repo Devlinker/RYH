@@ -1,8 +1,8 @@
 {{-- Reusable Address List + Add/Edit Modal --}}
 <div class="flex items-center justify-between mb-4">
-    <h2 class="font-semibold">{{ $title ?? 'Saved Addresses' }}</h2>
+    <h2 class="font-bold text-slate-900">{{ $title ?? 'Saved Addresses' }}</h2>
     <button onclick="AddressManager.openModal()" type="button"
-        class="text-sm border border-gray-300 rounded-md px-3 py-1.5 hover:bg-black hover:text-white transition">
+        class="text-xs sm:text-sm font-semibold border border-slate-300 rounded-full px-4 py-2 hover:bg-[#0f172a] hover:text-white hover:border-[#0f172a] transition shadow-xs">
         + Add Address
     </button>
 </div>
@@ -23,26 +23,26 @@
                 <div
                     class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 h-[70vh] overflow-y-auto md:overflow-y-visible md:h-auto">
                     <div class="w-full">
-                        <label class="text-sm text-gray-600">Full Name</label>
+                        <label class="text-sm font-medium text-slate-700">Full Name</label>
                         <input type="text" name="name" placeholder="Enter Your Full Name" required
-                            class="w-full mt-2 px-4 py-3 rounded-full border border-gray-200 text-sm sm:text-base outline-none">
+                            class="w-full mt-2 px-4 py-3 rounded-xl border border-slate-300 text-sm focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 outline-none transition">
                     </div>
                     <div class="w-full">
-                        <label class="text-sm text-gray-600">Mobile Number</label>
-                        <div class="flex items-center mt-2 border border-gray-200 rounded-full overflow-hidden w-full">
+                        <label class="text-sm font-medium text-slate-700">Mobile Number</label>
+                        <div class="flex items-center mt-2 border border-slate-300 rounded-xl overflow-hidden w-full focus-within:border-amber-500 focus-within:ring-2 focus-within:ring-amber-500/20 transition">
                             <div
-                                class="flex items-center gap-2 px-3 sm:px-4 border-r border-gray-200 shrink-0 bg-white">
+                                class="flex items-center gap-2 px-3 sm:px-4 border-r border-slate-300 shrink-0 bg-slate-50">
                                 <img src="https://flagcdn.com/w20/in.png" alt="India Flag" class="w-5 h-4 object-cover">
-                                <span class="text-sm text-gray-700">+91</span>
+                                <span class="text-sm font-medium text-slate-700">+91</span>
                             </div>
                             <input type="tel" name="phone_number" placeholder="Enter Mobile Number" required
-                                class="flex-1 min-w-0 px-4 py-3 text-sm sm:text-base outline-none">
+                                class="flex-1 min-w-0 px-4 py-3 text-sm outline-none">
                         </div>
                     </div>
                     <div class="w-full">
-                        <label class="text-sm text-gray-600">Address Type</label>
+                        <label class="text-sm font-medium text-slate-700">Address Type</label>
                         <select name="address_type" required
-                            class="w-full mt-2 px-4 py-3 rounded-full border border-gray-200 text-sm sm:text-base outline-none bg-white">
+                            class="w-full mt-2 px-4 py-3 rounded-xl border border-slate-300 text-sm outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 bg-white transition">
                             <option value="">Select Address Type</option>
                             <option value="home">Home</option>
                             <option value="work">Work</option>
@@ -50,35 +50,35 @@
                         </select>
                     </div>
                     <div class="w-full">
-                        <label class="text-sm text-gray-600">State</label>
+                        <label class="text-sm font-medium text-slate-700">State</label>
                         <input type="text" name="state" placeholder="Select State" required
-                            class="w-full mt-2 px-4 py-3 rounded-full border border-gray-200 text-sm sm:text-base outline-none">
+                            class="w-full mt-2 px-4 py-3 rounded-xl border border-slate-300 text-sm focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 outline-none transition">
                     </div>
                     <div class="w-full">
-                        <label class="text-sm text-gray-600">Street Address</label>
+                        <label class="text-sm font-medium text-slate-700">Street Address</label>
                         <input type="text" name="address" placeholder="Enter Street Address" required
-                            class="w-full mt-2 px-4 py-3 rounded-full border border-gray-200 text-sm sm:text-base outline-none">
+                            class="w-full mt-2 px-4 py-3 rounded-xl border border-slate-300 text-sm focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 outline-none transition">
                     </div>
                     <div class="w-full">
-                        <label class="text-sm text-gray-600">City</label>
+                        <label class="text-sm font-medium text-slate-700">City</label>
                         <input type="text" name="city" placeholder="Select City" required
-                            class="w-full mt-2 px-4 py-3 rounded-full border border-gray-200 text-sm sm:text-base outline-none">
+                            class="w-full mt-2 px-4 py-3 rounded-xl border border-slate-300 text-sm focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 outline-none transition">
                     </div>
                     <div class="w-full">
-                        <label class="text-sm text-gray-600">Pincode</label>
+                        <label class="text-sm font-medium text-slate-700">Pincode</label>
                         <input type="text" name="pincode" placeholder="Enter Pincode" required
-                            class="w-full mt-2 px-4 py-3 rounded-full border border-gray-200 text-sm sm:text-base outline-none">
+                            class="w-full mt-2 px-4 py-3 rounded-xl border border-slate-300 text-sm focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 outline-none transition">
                     </div>
                     <div class="w-full">
-                        <label class="text-sm text-gray-600">Landmark</label>
+                        <label class="text-sm font-medium text-slate-700">Landmark</label>
                         <input type="text" name="landmark" placeholder="Enter Landmark"
-                            class="w-full mt-2 px-4 py-3 rounded-full border border-gray-200 text-sm sm:text-base outline-none">
+                            class="w-full mt-2 px-4 py-3 rounded-xl border border-slate-300 text-sm focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 outline-none transition">
                     </div>
                 </div>
                 <p id="addressFormMessage" class="mt-4 hidden text-sm"></p>
                 <div class="mt-6 flex justify-start">
                     <button type="submit" id="addressSubmitBtn"
-                        class="w-full sm:w-auto bg-black text-white px-6 sm:px-8 py-3 rounded-full text-sm sm:text-base hover:bg-gray-800 transition">
+                        class="w-full sm:w-auto bg-[#0f172a] text-white px-8 py-3 rounded-full text-sm sm:text-base font-bold hover:bg-amber-500 hover:text-black transition-all duration-200 shadow-md">
                         Save Address
                     </button>
                 </div>
@@ -130,11 +130,7 @@
                         .getSelectedId());
                 }
             },
-            selectable: {
-                {
-                    $selectable ?? false ? 'true' : 'false'
-                }
-            }
+            selectable: {{ !empty($selectable) ? 'true' : 'false' }}
         });
     });
 </script>

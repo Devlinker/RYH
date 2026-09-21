@@ -1,10 +1,10 @@
 <div class="max-w-7xl mx-auto p-8 md:p-[2rem_4rem]">
     <!-- Tabs -->
-    <div class="flex gap-6 md:gap-8 border-b mb-6 md:mb-8 text-sm md:text-base">
-        <button id="tabReviews" class="border-b-2 border-black pb-2 font-semibold">
+    <div class="flex gap-6 md:gap-8 border-b border-slate-200 mb-6 md:mb-8 text-sm md:text-base">
+        <button id="tabReviews" class="border-b-2 border-amber-500 pb-2.5 font-bold text-slate-900 transition-colors">
             Customer Reviews
         </button>
-        <button id="tabShipping" class="text-gray-400 pb-2">
+        <button id="tabShipping" class="text-slate-400 hover:text-slate-700 pb-2.5 font-medium transition-colors">
             Shipping & Returns
         </button>
     </div>
@@ -13,11 +13,11 @@
     <!-- SHIPPING CONTENT -->
     <div id="shippingContent" class="hidden grid md:grid-cols-2 gap-6 mb-10">
         <!-- Shipping -->
-        <div class="border rounded-xl overflow-hidden">
-            <div class="bg-gray-200 px-6 py-3 font-semibold text-gray-800">
+        <div class="border border-slate-200 rounded-2xl overflow-hidden shadow-xs">
+            <div class="bg-slate-100/80 px-6 py-3.5 font-bold text-slate-900 border-b border-slate-200">
                 Shipping
             </div>
-            <div class="p-6 text-gray-600 text-sm">
+            <div class="p-6 text-slate-600 text-sm">
                 <ul class="list-disc pl-5 space-y-2">
                     <li>Delivery in 3–5 business days</li>
                     <li>Free shipping on orders above ₹999</li>
@@ -28,11 +28,11 @@
         </div>
 
         <!-- Returns -->
-        <div class="border rounded-xl overflow-hidden">
-            <div class="bg-gray-200 px-6 py-3 font-semibold text-gray-800">
+        <div class="border border-slate-200 rounded-2xl overflow-hidden shadow-xs">
+            <div class="bg-slate-100/80 px-6 py-3.5 font-bold text-slate-900 border-b border-slate-200">
                 Returns & Exchanges
             </div>
-            <div class="p-6 text-gray-600 text-sm">
+            <div class="p-6 text-slate-600 text-sm">
                 <ul class="list-disc pl-5 space-y-2">
                     <li>Delivery in 3–5 business days</li>
                     <li>Free shipping on orders above ₹999</li>
@@ -61,10 +61,12 @@
                 <div class="mt-6 space-y-3 w-full md:w-[90%]">
                     @foreach ($distribution as $star => $data)
                         <div class="flex items-center gap-3">
-                            <div class="w-full bg-gray-200 h-2 rounded">
-                                <div class="bg-black h-2 rounded" style="width: {{ $data['percent'] }}%"></div>
+                            <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+                                <div class="bg-[#0f172a] h-2.5 rounded-full" style="width: {{ $data['percent'] }}%"></div>
                             </div>
-                            ⭐{{ $star }}
+                            <span class="text-xs font-semibold text-slate-600 flex items-center gap-1 flex-shrink-0">
+                                <span class="text-amber-400">★</span>{{ $star }}
+                            </span>
                         </div>
                     @endforeach
                 </div>
@@ -102,14 +104,14 @@
                     <div class="flex flex-col sm:flex-row gap-4 mb-8">
                         <!-- Profile -->
                         <img src="{{ $review->user && $review->user->image_path ? asset('storage/' . $review->user->image_path) : '' }}"
-                            class="w-12 h-12 rounded-full object-cover">
+                            class="w-12 h-12 rounded-full object-cover border border-slate-200 shadow-xs">
                         <!-- Content -->
                         <div>
-                            <h4 class="font-semibold">
+                            <h4 class="font-bold text-slate-900">
                                 {{ $review->user->name ?? 'Anonymous' }}
                             </h4>
                             <!-- Stars -->
-                            <div class="flex items-center text-yellow-400 text-sm my-1">
+                            <div class="flex items-center text-amber-400 text-sm my-1">
                                 @for ($i = 0; $i < $review->rating; $i++)
                                     <i class="fa-solid fa-star"></i>
                                 @endfor
@@ -167,29 +169,25 @@
     const shippingContent = document.getElementById("shippingContent");
 
     tabReviews.onclick = function() {
-
         reviewContent.classList.remove("hidden");
         shippingContent.classList.add("hidden");
 
-        tabReviews.classList.add("border-b-2", "border-black", "font-semibold");
-        tabReviews.classList.remove("text-gray-400");
+        tabReviews.classList.add("border-b-2", "border-amber-500", "font-bold", "text-slate-900");
+        tabReviews.classList.remove("text-slate-400");
 
-        tabShipping.classList.remove("border-b-2", "border-black", "font-semibold");
-        tabShipping.classList.add("text-gray-400");
-
+        tabShipping.classList.remove("border-b-2", "border-amber-500", "font-bold", "text-slate-900");
+        tabShipping.classList.add("text-slate-400");
     }
 
     tabShipping.onclick = function() {
-
         shippingContent.classList.remove("hidden");
         reviewContent.classList.add("hidden");
 
-        tabShipping.classList.add("border-b-2", "border-black", "font-semibold");
-        tabShipping.classList.remove("text-gray-400");
+        tabShipping.classList.add("border-b-2", "border-amber-500", "font-bold", "text-slate-900");
+        tabShipping.classList.remove("text-slate-400");
 
-        tabReviews.classList.remove("border-b-2", "border-black", "font-semibold");
-        tabReviews.classList.add("text-gray-400");
-
+        tabReviews.classList.remove("border-b-2", "border-amber-500", "font-bold", "text-slate-900");
+        tabReviews.classList.add("text-slate-400");
     }
 
     function openReviewModal() {

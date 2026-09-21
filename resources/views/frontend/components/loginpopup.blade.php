@@ -23,7 +23,7 @@
     mx-auto
     ">
         <!-- Close Button -->
-        <button class="closeLogin absolute top-4 right-5 text-2xl text-gray-500 hover:text-black"> &times; </button>
+        <button class="closeLogin absolute top-4 right-5 text-2xl text-slate-400 hover:text-slate-900 transition-colors"> &times; </button>
         <!-- Popup Content -->
 
         <div class="text-center space-y-4">
@@ -59,14 +59,14 @@
 
                         <input type="text" id="mobileInput" placeholder="Enter 10 digit mobile number"
                             oninput="clearMobileError()"
-                            class="w-full px-4 py-3 border rounded-lg mb-4
-                           focus:ring-2 focus:ring-black focus:outline-none">
+                            class="w-full px-4 py-3 border border-slate-300 rounded-xl mb-4
+                           focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition">
 
                         <p id="mobileError" class="text-red-500 text-sm mb-4 hidden text-left"></p>
 
                         <button onclick="validateMobile()"
-                            class="w-full bg-black text-white py-3 rounded-lg
-                           hover:bg-gray-800 transition">
+                            class="w-full bg-[#0f172a] text-white py-3 rounded-xl font-semibold
+                           hover:bg-amber-500 hover:text-black transition-all duration-200 shadow-md">
                             Continue
                         </button>
 
@@ -89,26 +89,26 @@
                         <div class="flex justify-center sm:justify-start gap-3 sm:gap-4 mb-6">
                             <input type="text" maxlength="1"
                                 class="otp-input w-12 h-12 sm:w-14 sm:h-14
-                               text-center text-lg sm:text-xl
-                               border rounded-xl focus:ring-2 focus:ring-black focus:outline-none">
+                               text-center text-lg sm:text-xl font-bold text-slate-900
+                               border border-slate-300 rounded-xl focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition">
                             <input type="text" maxlength="1"
                                 class="otp-input w-12 h-12 sm:w-14 sm:h-14
-                               text-center text-lg sm:text-xl
-                               border rounded-xl focus:ring-2 focus:ring-black focus:outline-none">
+                               text-center text-lg sm:text-xl font-bold text-slate-900
+                               border border-slate-300 rounded-xl focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition">
                             <input type="text" maxlength="1"
                                 class="otp-input w-12 h-12 sm:w-14 sm:h-14
-                               text-center text-lg sm:text-xl
-                               border rounded-xl focus:ring-2 focus:ring-black focus:outline-none">
+                               text-center text-lg sm:text-xl font-bold text-slate-900
+                               border border-slate-300 rounded-xl focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition">
                             <input type="text" maxlength="1"
                                 class="otp-input w-12 h-12 sm:w-14 sm:h-14
-                               text-center text-lg sm:text-xl
-                               border rounded-xl focus:ring-2 focus:ring-black focus:outline-none">
+                               text-center text-lg sm:text-xl font-bold text-slate-900
+                               border border-slate-300 rounded-xl focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition">
                         </div>
                         <p id="otpError" class="text-red-500 text-sm mb-4 hidden text-left"></p>
 
                         <button onclick="verifyOTP()"
-                            class="w-full bg-black text-white py-3 rounded-lg
-                           hover:bg-gray-800 transition">
+                            class="w-full bg-[#0f172a] text-white py-3 rounded-xl font-semibold
+                           hover:bg-amber-500 hover:text-black transition-all duration-200 shadow-md">
                             Continue
                         </button>
 
@@ -130,18 +130,18 @@
                             Welcome to Chumpay
                         </h2>
 
-                        <label class="text-sm font-medium text-gray-600 mb-2 block text-left">Enter your name</label>
+                        <label class="text-sm font-medium text-slate-700 mb-2 block text-left">Enter your name</label>
                         <input type="text" id="regName" placeholder="What should we call you?"
-                            class="w-full px-4 py-2 border rounded-xl focus:ring-2 focus:ring-black focus:outline-none mb-4">
+                            class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition mb-4">
 
-                        <label class="text-sm font-medium text-gray-600 mb-2 block text-left">Your email address</label>
+                        <label class="text-sm font-medium text-slate-700 mb-2 block text-left">Your email address</label>
                         <input type="email" id="regEmail" placeholder="We'll send updates and order details here"
-                            class="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:ring-black focus:outline-none mb-4">
+                            class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 focus:outline-none transition mb-4">
 
                         <p id="welcomeError" class="text-red-500 text-sm mb-4 hidden text-left"></p>
 
                         <button onclick="registerUser()"
-                            class="w-full bg-black text-white py-3 rounded-xl hover:bg-gray-800 transition">
+                            class="w-full bg-[#0f172a] text-white py-3 rounded-xl font-semibold hover:bg-amber-500 hover:text-black transition-all duration-200 shadow-md">
                             Continue
                         </button>
                     </div>
